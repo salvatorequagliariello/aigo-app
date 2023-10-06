@@ -4,10 +4,10 @@
         <a routerLink="dashboard">dashboard</a>
     </div>
     <div class="d-flex gap-2">
-        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="signIn()" class="btn btn-primary">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary">
             Sign In
         </button>
-        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="logOut()" class="btn btn-danger rounded-4">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-4">
             Log Out
         </button>
         <button (click)="showUser()" class="btn btn-primary rounded-4">

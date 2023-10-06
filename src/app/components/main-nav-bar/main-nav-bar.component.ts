@@ -10,11 +10,11 @@ export class MainNavBarComponent {
 
   constructor( public auth: AuthService) {}
 
-  signIn() {
-    this.auth.loginWithRedirect();
+  handleSignIn() {
+    this.auth.loginWithRedirect({ appState: { target: '/dashboard' } });
   }
 
-  logOut() {
+  handleSignOut() {
     this.auth.logout();
   }
 
