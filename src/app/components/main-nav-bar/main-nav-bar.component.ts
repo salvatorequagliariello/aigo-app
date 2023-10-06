@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -8,10 +8,14 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class MainNavBarComponent {
 
-  constructor(public auth: AuthService) {}
+  constructor( public auth: AuthService) {}
 
   signIn() {
     this.auth.loginWithRedirect();
+  }
+
+  logOut() {
+    this.auth.logout();
   }
 
   showUser() {

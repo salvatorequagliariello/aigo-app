@@ -3,11 +3,14 @@
         <a routerLink="/">landing</a>
         <a routerLink="dashboard">dashboard</a>
     </div>
-    <div>
-        <button (click)="signIn()" class="btn btn-primary">
+    <div class="d-flex gap-2">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="signIn()" class="btn btn-primary">
             Sign In
         </button>
-        <button (click)="showUser()" class="btn btn-primary">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="logOut()" class="btn btn-danger rounded-4">
+            Log Out
+        </button>
+        <button (click)="showUser()" class="btn btn-primary rounded-4">
             User
         </button>
     </div>

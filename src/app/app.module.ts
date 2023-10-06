@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule.forRoot({
       ... env.auth,
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: "http://localhost:4200/dashboard"
       }
     })
   ],
