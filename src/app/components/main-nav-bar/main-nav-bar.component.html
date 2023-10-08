@@ -1,16 +1,16 @@
-<div class="m-auto bg-dark text-light p-3 px-5 d-flex gap-2 d-flex align-items-center justify-content-between">
+<div class="m-auto bg-dark text-light p-2 d-flex gap-2 d-flex align-items-center justify-content-between">
     <div>
         <a routerLink="/">landing</a>
         <a routerLink="dashboard">dashboard</a>
     </div>
     <div class="d-flex gap-2">
-        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary fs-6">
             Sign In
         </button>
-        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-4">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-4 fs-6">
             Log Out
         </button>
-        <button (click)="showUser()" class="btn btn-primary rounded-4">
+        <button (click)="showUser()" class="btn btn-primary rounded-4 fs-6">
             User
         </button>
     </div>
