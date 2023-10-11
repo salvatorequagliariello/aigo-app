@@ -15,4 +15,7 @@
         </div>
         <button type="submit" class="btn btn-primary w-25 m-auto mt-2" [disabled]="!chatForm.valid">Send</button>
     </form>
+    <div *ngIf="chat.length > 1">
+        {{ chat | json }}
+    </div>
 </div>

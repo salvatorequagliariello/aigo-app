@@ -1,12 +1,12 @@
-import authCred from '../../auth_config.json';
+import env from '../../config.json';
 
 export const environment = {
     production: false,
     auth: {
-        domain: authCred.domain,
-        clientId: authCred.clientId,
+        domain: env.domain,
+        clientId: env.clientId,
     },
-    openAi: "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"
+    openAi: env.openAi
 };
 
 

@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OpenAiService } from './services/open-ai.service';
 
 
 
@@ -20,6 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    OpenAiService
   ]
 })
 export class DashboardModule { }
