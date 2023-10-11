@@ -28,7 +28,6 @@ export class OpenAiService {
         messages: this.messages
       })).subscribe(response => {
           this.messages.push(response.choices[0].message);
-          console.log(response.choices[0].message.content);
       });
 
     } catch (error: any) {
