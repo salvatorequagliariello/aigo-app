@@ -1,10 +1,18 @@
 <h1>AIgo Chat</h1>
 <div>
-    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group m-auto w-75 d-flex flex-column gap-2 border border-secondary-subtle rounded p-3">
         <div>
-            <label for="chatInput">Send a message</label>
-            <textarea type="textbox" name="chatInput" formControlName="chatInput" id="chatInput"></textarea>
+            <textarea 
+                type="textbox" 
+                name="chatInput" 
+                formControlName="chatInput"
+                id="chatInput" 
+                class="form-control h-50 border-0" 
+                style="resize: none;" 
+                placeholder="send..."
+            >
+            </textarea>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!chatForm.valid">Send</button>
+        <button type="submit" class="btn btn-primary w-25 m-auto mt-2" [disabled]="!chatForm.valid">Send</button>
     </form>
 </div>
