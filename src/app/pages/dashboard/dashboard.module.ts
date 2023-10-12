@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from './services/open-ai.service';
 import { CodeAiComponent } from './code-ai/code-ai.component';
 import { CodeAiService } from './services/code-ai.service';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 
@@ -24,6 +25,7 @@ import { CodeAiService } from './services/code-ai.service';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     OpenAiService,
