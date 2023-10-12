@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OpenAiService } from '../services/open-ai.service';
 import { ChatCompletionMessage } from 'openai/resources/chat';
+import { ResponseObj } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'aigo-ai-chat',
@@ -20,9 +21,11 @@ export class AiChatComponent implements OnInit {
   }
   
   chat: ChatCompletionMessage[] = this.openAi.messages
+  response: ResponseObj =  this.openAi.response;
+  
   async onSubmit() {
     if (this.chatForm.valid) {
-      const chatResponse = await this.openAi.getChatResponse(this.chatForm.value.chatInput);
+      const chatResponse = await this.openAi.getChatResponse(this.chatForm.value.chatInput, this.chat, this.response);
       this.chatForm.reset(this.chatForm);
     }
   }

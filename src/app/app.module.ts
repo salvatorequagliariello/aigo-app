@@ -29,7 +29,9 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
       }
     })
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

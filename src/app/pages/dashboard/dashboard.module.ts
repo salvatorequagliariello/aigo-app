@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { AiChatComponent } from './ai-chat/ai-chat.component';
@@ -20,7 +20,7 @@ import { OpenAiService } from './services/open-ai.service';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     OpenAiService

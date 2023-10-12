@@ -13,14 +13,24 @@
             >
             </textarea>
         </div>
-        <button type="submit" class="btn btn-primary w-25 m-auto mt-2" [disabled]="!chatForm.valid">Send</button>
+        <button type="submit" class="btn btn-primary w-md-25 m-auto mt-2" [disabled]="!chatForm.valid">
+            Generate
+        </button>
     </form>
-    <ul class="list-group-flush" *ngIf="chat.length > 1" class="w-100 m-0 p-0">
-        <li 
-        *ngFor="let message of chat" class="list-group-item w-100 m-0 p-2"
-        [ngClass]="message.role === 'user' ? 'list-group-item-light' : 'list-group-item-primary'"
-        >
-            <p>{{ message.content }}</p>
-        </li>
-    </ul>
+    <div *ngIf="chat.length > 1" class="w-100 m-0 p-0"> 
+        <h3>Conversation</h3>
+        <ul class="list-group-flush">
+            <li 
+                *ngFor="let message of chat" class="list-group-item w-100 my-2 p-2 rounded"
+                [ngClass]="message.role === 'user' ? 'list-group-item-light' : 'list-group-item-primary'"
+            >
+                <p>
+                    {{ message.content }}
+                </p>
+            </li>
+            <p *ngIf="response.loading">
+                Loading
+            </p>
+        </ul>
+    </div>
 </div>
