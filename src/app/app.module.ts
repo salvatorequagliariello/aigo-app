@@ -10,6 +10,7 @@ import { environment as env } from 'src/environments/environment';
 import { MainNavBarComponent } from './components/main-nav-bar/main-nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
     AppRoutingModule,
     HttpClientModule,
     DashboardModule,
+    MarkdownModule.forRoot(),
     AuthModule.forRoot({
       ... env.auth,
       authorizationParams: {

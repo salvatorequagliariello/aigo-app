@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ChatCompletionMessage, ChatCompletionMessageParam } from 'openai/resources/chat';
 import OpenAI from 'openai';
-import { ChatCompletionMessage} from 'openai/resources/chat';
 import { from } from 'rxjs';
 import { ResponseObj } from 'src/app/models/interfaces';
 import { environment } from 'src/environments/environment';
@@ -8,13 +8,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OpenAiService {
+export class CodeAiService {
   messages: ChatCompletionMessage[] = [];
   response: ResponseObj = {
     loading: false,
     errorMessage: ''
+  };
+  instructionMessage: ChatCompletionMessageParam =  {
+    role: 'system',
+    content: 'You are a code generator. You must answer only in markdown code snippets. Use code comments for explanations.'
   }
-  
+
   constructor() { }
   
   readonly openAi = new OpenAI({
@@ -27,7 +31,7 @@ export class OpenAiService {
     responseObj.loading = true;
       await from(this.openAi.chat.completions.create({
         model: "gpt-3.5-turbo",
-        messages: this.messages
+        messages: [this.instructionMessage, ...this.messages]
       })).subscribe({
         next(response) {
           messages.push(response.choices[0].message);

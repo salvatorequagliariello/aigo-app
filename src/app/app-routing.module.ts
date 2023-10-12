@@ -4,6 +4,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { AuthGuard } from '@auth0/auth0-angular';
 import { DashboardHomeComponent } from './pages/dashboard/dashboard-home/dashboard-home.component';
 import { AiChatComponent } from './pages/dashboard/ai-chat/ai-chat.component';
+import { CodeAiComponent } from './pages/dashboard/code-ai/code-ai.component';
 
 const routes: Routes = [
   { 
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'dashboard/chat', 
     component: AiChatComponent
+  },
+  {
+    path: 'dashboard/code', 
+    component: CodeAiComponent
   }
 ];
 

@@ -5,15 +5,19 @@ import { AiChatComponent } from './ai-chat/ai-chat.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from './services/open-ai.service';
+import { CodeAiComponent } from './code-ai/code-ai.component';
+import { CodeAiService } from './services/code-ai.service';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 
 @NgModule({
   declarations: [
     DashboardHomeComponent,
-    AiChatComponent
+    AiChatComponent,
+    CodeAiComponent
   ],
   imports: [
     BrowserModule,
@@ -21,9 +25,11 @@ import { OpenAiService } from './services/open-ai.service';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
-    OpenAiService
+    OpenAiService,
+    CodeAiService
   ]
 })
 export class DashboardModule { }
