@@ -1,1 +1,41 @@
-<p>code-ai works!</p>
+<div class="m-auto w-75">
+    <h1>AIgo Chat</h1>
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column gap-2 border border-secondary-subtle rounded p-3">
+        <div>
+            <textarea 
+                type="textbox" 
+                name="chatInput" 
+                formControlName="chatInput"
+                id="chatInput" 
+                class="form-control h-50 border-0" 
+                style="resize: none;" 
+                placeholder="send..."
+            >
+            </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-md-25 m-auto mt-2" [disabled]="!chatForm.valid">
+            Generate
+        </button>
+    </form>
+    <div *ngIf="response.errorMessage">
+        <p>
+            {{ response.errorMessage }}
+        </p>
+    </div>
+    <div *ngIf="chat.length > 1" class="w-100 m-0 p-0"> 
+        <h3>Conversation</h3>
+        <ul class="list-group-flush">
+            <li 
+                *ngFor="let message of chat" class="list-group-item w-100 my-2 p-2 rounded"
+                [ngClass]="message.role === 'user' ? 'list-group-item-light' : 'list-group-item-primary'"
+            >
+                <p>
+                    {{ message.content }}
+                </p>
+            </li>
+            <p *ngIf="response.loading">
+                Loading
+            </p>
+        </ul>
+    </div>
+</div>

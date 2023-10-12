@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ChatCompletionMessage } from 'openai/resources/chat';
 import OpenAI from 'openai';
-import { ChatCompletionMessage} from 'openai/resources/chat';
 import { from } from 'rxjs';
 import { ResponseObj } from 'src/app/models/interfaces';
 import { environment } from 'src/environments/environment';
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OpenAiService {
+export class CodeAiService {
   messages: ChatCompletionMessage[] = [];
   response: ResponseObj = {
     loading: false,
