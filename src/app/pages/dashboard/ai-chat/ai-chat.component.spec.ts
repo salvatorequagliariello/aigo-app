@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
+import { AiChatComponent } from './ai-chat.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('AiChatComponent', () => {
+  let component: AiChatComponent;
+  let fixture: ComponentFixture<AiChatComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent]
+      declarations: [AiChatComponent]
     });
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(AiChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
