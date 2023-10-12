@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OpenAiService } from './services/open-ai.service';
 import { CodeAiComponent } from './code-ai/code-ai.component';
+import { CodeAiService } from './services/code-ai.service';
 
 
 
@@ -25,7 +26,8 @@ import { CodeAiComponent } from './code-ai/code-ai.component';
     ReactiveFormsModule,
   ],
   providers: [
-    OpenAiService
+    OpenAiService,
+    CodeAiService
   ]
 })
 export class DashboardModule { }
