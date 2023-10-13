@@ -1,0 +1,59 @@
+<div class="m-auto w-75">
+    <div>
+        <h1>AIgo Image Generation</h1>
+        <p>Turn your prompt into an image.</p>
+    </div>
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column gap-2 border border-secondary-subtle rounded p-3">
+            <textarea 
+                type="textbox" 
+                name="prompt" 
+                formControlName="prompt"
+                id="prompt" 
+                class="form-control h-50 border-0" 
+                style="resize: none;" 
+                placeholder="A picture of a horse in Swisse Alps."
+            >
+            </textarea>
+            <select
+                formControlName="amount"
+                class="form-select"
+            >
+                <option value="" selected>Choose amount of images</option>
+                <option *ngFor="let amount of amountOptions" [ngValue]="amount.value">
+                    {{ amount.label }}
+                </option>
+            </select>
+            <select
+            formControlName="resolution"
+            class="form-select"
+        >
+            <option value="" selected>Choose resolution of images</option>
+            <option *ngFor="let resolution of resolutionOptions" [ngValue]="resolution.value">
+                {{ resolution.label }}
+            </option>
+        </select>
+        <button type="submit" class="btn btn-primary w-md-25 m-auto mt-2" [disabled]="!chatForm.valid">
+            Generate
+        </button>
+    </form>
+    <div *ngIf="response.errorMessage">
+        <p>
+            {{ response.errorMessage }}
+        </p>
+    </div>
+    <div class="container">
+        <p *ngIf="response.loading && images.length === 0">
+            Loading
+        </p>
+        <div class="card" *ngFor="let image of images" ngClass="col-md-2 col-sm-1">
+            <img class="card-img-top" [src]="image.url">
+            <div class="p-2">
+                <button class="btn btn-primary m-auto">
+                    <a [href]="image.url" target="_blank" rel="noopener noreferrer" class="text-light">
+                        Download
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
