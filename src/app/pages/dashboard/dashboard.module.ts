@@ -1,4 +1,4 @@
-import { NgModule, TemplateRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { AiChatComponent } from './ai-chat/ai-chat.component';
@@ -11,6 +11,7 @@ import { CodeAiComponent } from './code-ai/code-ai.component';
 import { CodeAiService } from './services/code-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { ImageAiComponent } from './image-ai/image-ai.component';
+import { ImageAiService } from './services/image-ai.service';
 
 
 
@@ -31,7 +32,8 @@ import { ImageAiComponent } from './image-ai/image-ai.component';
   ],
   providers: [
     OpenAiService,
-    CodeAiService
+    CodeAiService,
+    ImageAiService
   ]
 })
 export class DashboardModule { }
