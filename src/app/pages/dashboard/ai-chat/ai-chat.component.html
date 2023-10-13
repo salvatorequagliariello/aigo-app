@@ -1,5 +1,8 @@
 <div class="m-auto w-75">
-    <h1>AIgo Chat</h1>
+    <div>
+        <h1>AIgo Chat</h1>
+        <p>Our most advanced conversation model.</p>
+    </div>
     <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column gap-2 border border-secondary-subtle rounded p-3">
         <div>
             <textarea 
@@ -9,7 +12,7 @@
                 id="chatInput" 
                 class="form-control h-50 border-0" 
                 style="resize: none;" 
-                placeholder="send..."
+                placeholder="How do i calculate the radius of a circle?"
             >
             </textarea>
         </div>
