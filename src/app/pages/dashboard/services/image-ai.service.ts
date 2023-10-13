@@ -59,7 +59,7 @@ export class ImageAiService {
     dangerouslyAllowBrowser: true
   })
 
-  async getChatResponse
+  async getImageGeneration
     (prompt: string, images: Image[], responseObj: ResponseObj, resolution: "256x256" | "512x512" | "1024x1024" | null | undefined, amount: string) {
     images.length = 0;
     responseObj.loading = true;

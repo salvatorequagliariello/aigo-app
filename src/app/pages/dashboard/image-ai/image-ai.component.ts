@@ -29,7 +29,7 @@ export class ImageAiComponent {
   
   async onSubmit() {
     if (this.chatForm.valid) {
-      const chatResponse = await this.imageAi.getChatResponse(this.chatForm.value.prompt, this.images, this.response, this.chatForm.value.resolution, this.chatForm.value.amount);
+      const chatResponse = await this.imageAi.getImageGeneration(this.chatForm.value.prompt, this.images, this.response, this.chatForm.value.resolution, this.chatForm.value.amount);
       this.chatForm.reset(this.chatForm);
     }
   }

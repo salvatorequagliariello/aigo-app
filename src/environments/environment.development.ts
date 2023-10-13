@@ -6,5 +6,6 @@ export const environment = {
         domain: env.domain,
         clientId: env.clientId,
     },
-    openAi: env.openAi
+    openAi: env.openAi,
+    replicateAi: env.replicateAi
 };

@@ -26,7 +26,7 @@ export class CodeAiService {
     dangerouslyAllowBrowser: true
   })
 
-  async getChatResponse(message: string, messages: ChatCompletionMessage[], responseObj: ResponseObj) {
+  async getCodeGeneration(message: string, messages: ChatCompletionMessage[], responseObj: ResponseObj) {
     messages.push({ role: 'user', content: message });
     responseObj.loading = true;
       await from(this.openAi.chat.completions.create({

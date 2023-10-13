@@ -7,9 +7,9 @@
         <div>
             <textarea 
                 type="textbox" 
-                name="chatInput" 
-                formControlName="chatInput"
-                id="chatInput" 
+                name="prompt" 
+                formControlName="prompt"
+                id="prompt" 
                 class="form-control h-50 border-0" 
                 style="resize: none;" 
                 placeholder="Piano solo"
@@ -25,10 +25,14 @@
             {{ response.errorMessage }}
         </p>
     </div>
-    <div *ngIf="chat.length === 0">
+    <div *ngIf="music.length === 0">
         <p>No music generated.</p>
     </div>
-    <div *ngIf="chat.length >= 1" class="w-100 m-0 p-0"> 
-      
+    <div *ngIf="music.length >= 1" class="w-100 m-0 p-0"> 
+      <div *ngFor="let audio of music">
+        <p>
+            {{ audio | json }}
+        </p>
+      </div>
     </div>
 </div>

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { OpenAiService } from '../services/open-ai.service';
-import { ChatCompletionMessage } from 'openai/resources/chat';
 import { ResponseObj } from 'src/app/models/interfaces';
+import { MusicAiService } from '../services/music-ai.service';
 
 @Component({
   selector: 'aigo-music-ai',
@@ -12,20 +11,20 @@ import { ResponseObj } from 'src/app/models/interfaces';
 export class MusicAiComponent {
   chatForm!: FormGroup
   
-  constructor( private openAi: OpenAiService ) {}
+  constructor( private musicAi: MusicAiService ) {}
   
   ngOnInit(): void {
     this.chatForm = new FormGroup({
-      chatInput: new FormControl('', Validators.required)
+      prompt: new FormControl('', Validators.required)
     }) 
   }
   
-  chat: ChatCompletionMessage[] = this.openAi.messages
-  response: ResponseObj =  this.openAi.response;
+  music: any[] = this.musicAi.music
+  response: ResponseObj =  this.musicAi.response;
   
   async onSubmit() {
     if (this.chatForm.valid) {
-      const chatResponse = await this.openAi.getChatResponse(this.chatForm.value.chatInput, this.chat, this.response);
+      const chatResponse = await this.musicAi.getAudioGeneration(this.chatForm.value.chatInput, this.music, this.response);
       this.chatForm.reset(this.chatForm);
     }
   }
