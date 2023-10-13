@@ -10,6 +10,7 @@ import { OpenAiService } from './services/open-ai.service';
 import { CodeAiComponent } from './code-ai/code-ai.component';
 import { CodeAiService } from './services/code-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
+import { ImageAiComponent } from './image-ai/image-ai.component';
 
 
 
@@ -17,7 +18,8 @@ import { MarkdownModule } from 'ngx-markdown';
   declarations: [
     DashboardHomeComponent,
     AiChatComponent,
-    CodeAiComponent
+    CodeAiComponent,
+    ImageAiComponent
   ],
   imports: [
     BrowserModule,
