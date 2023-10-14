@@ -10,4 +10,5 @@ export class AppComponent {
   title = 'aigo';
 
   constructor( public auth: AuthService ) {}
+
 }
