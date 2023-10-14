@@ -6,7 +6,6 @@ import { DashboardHomeComponent } from './pages/dashboard/dashboard-home/dashboa
 import { AiChatComponent } from './pages/dashboard/ai-chat/ai-chat.component';
 import { CodeAiComponent } from './pages/dashboard/code-ai/code-ai.component';
 import { ImageAiComponent } from './pages/dashboard/image-ai/image-ai.component';
-import { MusicAiComponent } from './pages/dashboard/music-ai/music-ai.component';
 
 const routes: Routes = [
   { 
@@ -29,10 +28,6 @@ const routes: Routes = [
   {
     path: 'dashboard/image-generation', 
     component: ImageAiComponent
-  },
-  {
-    path: 'dashboard/music-generation', 
-    component: MusicAiComponent
   }
 ];
 

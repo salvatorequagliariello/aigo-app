@@ -12,8 +12,6 @@ import { CodeAiService } from './services/code-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { ImageAiComponent } from './image-ai/image-ai.component';
 import { ImageAiService } from './services/image-ai.service';
-import { MusicAiComponent } from './music-ai/music-ai.component';
-import { MusicAiService } from './services/music-ai.service';
 
 
 
@@ -23,7 +21,6 @@ import { MusicAiService } from './services/music-ai.service';
     AiChatComponent,
     CodeAiComponent,
     ImageAiComponent,
-    MusicAiComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +33,7 @@ import { MusicAiService } from './services/music-ai.service';
   providers: [
     OpenAiService,
     CodeAiService,
-    ImageAiService,
-    MusicAiService
+    ImageAiService
   ]
 })
 export class DashboardModule { }
