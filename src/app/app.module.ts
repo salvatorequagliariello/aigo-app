@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
-import { environment as env } from 'src/environments/environment';
+
 import { MainNavBarComponent } from './components/main-nav-bar/main-nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
@@ -25,7 +25,8 @@ import { MarkdownModule } from 'ngx-markdown';
     DashboardModule,
     MarkdownModule.forRoot(),
     AuthModule.forRoot({
-      ... env.auth,
+      clientId: import.meta.env.NG_APP_AUTH_CLIENT_ID,
+      domain: import.meta.env.NG_APP_AUTH_DOMAIN,
       authorizationParams: {
         redirect_uri: window.location.origin
       }

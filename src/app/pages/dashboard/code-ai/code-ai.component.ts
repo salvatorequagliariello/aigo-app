@@ -25,7 +25,7 @@ export class CodeAiComponent {
   
   async onSubmit() {
     if (this.chatForm.valid) {
-      const chatResponse = await this.codeAi.getChatResponse(this.chatForm.value.chatInput, this.chat, this.response);
+      const chatResponse = await this.codeAi.getCodeGeneration(this.chatForm.value.chatInput, this.chat, this.response);
       this.chatForm.reset(this.chatForm);
     }
   }
