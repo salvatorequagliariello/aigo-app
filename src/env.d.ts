@@ -11,6 +11,13 @@ interface ImportMetaEnv {
   readonly NG_APP_AUTH_DOMAIN: string;
   readonly NG_APP_AUTH_CLIENT_ID: string;
   readonly NG_APP_OPEN_AI_KEY: string;
+
+  readonly NG_APP_FIREBASE_PROJECT_ID: string;
+  readonly NG_APP_FIREBASE_APP_ID: string;
+  readonly NG_APP_FIREBASE_STORAGE_BUCKET: string;
+  readonly NG_APP_FIREBASE_API_KEY: string;
+  readonly NG_APP_FIREBASE_AUTH_DOMAIN: string;
+  readonly NG_APP_FIREBASE_MESSAGING_SENDER_ID: string;
   // Add your environment variables below
   // readonly NG_APP_API_URL: string;
   [key: string]: any;
@@ -31,6 +38,13 @@ declare var process: {
     NG_APP_AUTH_DOMAIN : string;
     NG_APP_AUTH_CLIENT_ID: string;
     NG_APP_OPEN_AI_KEY: string;
+
+    NG_APP_FIREBASE_PROJECT_ID: string;
+    NG_APP_FIREBASE_APP_ID: string;
+    NG_APP_FIREBASE_STORAGE_BUCKET: string;
+    NG_APP_FIREBASE_API_KEY: string;
+    NG_APP_FIREBASE_AUTH_DOMAIN: string;
+    NG_APP_FIREBASE_MESSAGING_SENDER_ID: string;
     [key: string]: any;
   };
 };

@@ -11,6 +11,11 @@ import { MainNavBarComponent } from './components/main-nav-bar/main-nav-bar.comp
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { MarkdownModule } from 'ngx-markdown';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { MarkdownModule } from 'ngx-markdown';
       authorizationParams: {
         redirect_uri: window.location.origin
       }
-    })
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [
     
