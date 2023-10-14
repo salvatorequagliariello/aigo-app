@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ResponseObj } from 'src/app/models/interfaces';
-import { environment } from 'src/environments/environment';
 import Replicate from "replicate";
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +16,7 @@ export class MusicAiService {
   constructor( private http: HttpClient ) { }
   
   replicate = new Replicate({
-    auth: environment.replicateAi,
+    auth: import.meta.env.NG_APP_REPLICATE_AI_KEY,
   })
 
   async getAudioGeneration(prompt: string, music: any[], responseObj: ResponseObj) {

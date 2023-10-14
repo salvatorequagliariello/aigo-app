@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import OpenAI from 'openai';
 import { Image } from 'openai/resources';
-import { ChatCompletionMessage } from 'openai/resources/chat';
 import { from } from 'rxjs';
 import { AmountObj, ResolutionObj, ResponseObj } from 'src/app/models/interfaces';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +53,7 @@ export class ImageAiService {
   constructor() { }
   
   readonly openAi = new OpenAI({
-    apiKey: environment.openAi,
+    apiKey: import.meta.env.NG_APP_OPEN_AI_KEY,
     dangerouslyAllowBrowser: true
   })
 

@@ -3,7 +3,6 @@ import OpenAI from 'openai';
 import { ChatCompletionMessage} from 'openai/resources/chat';
 import { from } from 'rxjs';
 import { ResponseObj } from 'src/app/models/interfaces';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class OpenAiService {
   constructor() { }
   
   readonly openAi = new OpenAI({
-    apiKey: environment.openAi,
+    apiKey: import.meta.env.NG_APP_OPEN_AI_KEY,
     dangerouslyAllowBrowser: true
   })
 

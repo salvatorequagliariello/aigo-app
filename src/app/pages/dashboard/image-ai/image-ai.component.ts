@@ -13,7 +13,7 @@ export class ImageAiComponent {
   chatForm!: FormGroup
   
   constructor( private imageAi: ImageAiService ) {}
-  
+
   ngOnInit(): void {
     this.chatForm = new FormGroup({
       prompt: new FormControl('', Validators.required),
