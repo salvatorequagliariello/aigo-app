@@ -7,7 +7,7 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aigo';
+  title = 'Aigo';
 
   constructor( public auth: AuthService ) {}
 

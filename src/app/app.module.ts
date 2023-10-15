@@ -11,7 +11,7 @@ import { MainNavBarComponent } from './components/main-nav-bar/main-nav-bar.comp
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { MarkdownModule } from 'ngx-markdown';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -28,6 +28,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AppRoutingModule,
     HttpClientModule,
     DashboardModule,
+    FirebaseAppModule,
     MarkdownModule.forRoot(),
     AuthModule.forRoot({
       clientId: import.meta.env.NG_APP_AUTH_CLIENT_ID,

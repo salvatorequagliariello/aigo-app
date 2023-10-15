@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 
 @Component({
   selector: 'aigo-dashboard-home',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class DashboardHomeComponent {
 
+  constructor(private userTk: ManageUserTokensService) {}
+
+  userTokens() {
+    this.userTk.getUserTokens()
+  }
 }
