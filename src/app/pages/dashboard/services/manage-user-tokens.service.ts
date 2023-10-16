@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { AuthService } from '@auth0/auth0-angular';
-import { CollectionReference, DocumentData, addDoc, collection } from 'firebase/firestore';
+import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { AuthObj, UserObj } from 'src/app/models/interfaces';
 
 @Injectable({
@@ -24,14 +24,25 @@ export class ManageUserTokensService {
     authId: ''
   }
 
-  getUser(user : UserObj | DocumentData) {
+  async checkUser() {
     this.auth.isAuthenticated$.subscribe(data => this.authObj.isLoggedIn = data);
     this.auth.user$.subscribe(data => this.authObj.authId = data?.sub);
 
+    if (this.authObj.isLoggedIn && this.authObj.authId) {
+        const usersRef = doc(this.fs, 'users', this.authObj.authId);
+        const docSnap = await getDoc(usersRef);
+        
+        if (!docSnap.exists()) {
+          await this.addUser();
+        } else {
+        }
+    }
+  }
+
+  getUser() {
+
     if (this.authObj.isLoggedIn) { 
-      try {
         collectionData(this.usersCollection).subscribe(data => {
-          console.log(data)
           const foundUser: DocumentData[] = data.filter(user => user['id'] === this.authObj.authId);
 
           if (foundUser.length >= 1) {
@@ -39,14 +50,10 @@ export class ManageUserTokensService {
             this.user.name = foundUser[0]['name'];
             this.user.email = foundUser[0]['email'];
             this.user.tokens = foundUser[0]['tokens'];
-          }
-
+          } 
         })
-      } catch (error) {
-          console.log(error);
-      }
     }
-  }
+  };
 
   addUser() {
     this.auth.user$.subscribe(data => {
@@ -56,7 +63,16 @@ export class ManageUserTokensService {
         this.user.id = data.sub;
         this.user.tokens = 10;
       }
-      addDoc(this.usersCollection, this.user);
+
+      if (this.authObj.authId) 
+        setDoc(doc(this.fs, 'users', this.authObj.authId), {
+           name: this.user.name,
+           email: this.user.email,
+           tokens: this.user.tokens,
+           id: this.user.id
+         }).catch(err => {
+          console.log(err);
+         });
     })
   }
 

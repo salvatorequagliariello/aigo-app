@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 import { UserObj } from 'src/app/models/interfaces';
 import { DocumentData } from 'firebase/firestore';
@@ -10,15 +10,13 @@ import { DocumentData } from 'firebase/firestore';
 })
 export class DashboardHomeComponent implements OnInit {
   constructor(private userTk: ManageUserTokensService) {}
-  
-  ngOnInit(): void {
-    this.userTk.getUser(this.user);
-
-  }
-
   user: UserObj | DocumentData = this.userTk.user;
   
+  async ngOnInit(): Promise<void> {
+    await this.userTk.checkUser();
+  }
+
   userTokens() {
-    console.log(this.user);
+    console.log(this.userTk.checkUser());
   }
 }
