@@ -33,14 +33,15 @@ export class ManageUserTokensService {
         const docSnap = await getDoc(usersRef);
         
         if (!docSnap.exists()) {
-          await this.addUser();
+          this.addUser();
+          this.getUser();
         } else {
-        }
-    }
+          this.getUser();
+        };
+    };
   }
 
   getUser() {
-
     if (this.authObj.isLoggedIn) { 
         collectionData(this.usersCollection).subscribe(data => {
           const foundUser: DocumentData[] = data.filter(user => user['id'] === this.authObj.authId);

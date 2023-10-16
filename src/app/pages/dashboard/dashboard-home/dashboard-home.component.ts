@@ -17,6 +17,7 @@ export class DashboardHomeComponent implements OnInit {
   }
 
   userTokens() {
-    console.log(this.userTk.checkUser());
+    this.userTk.checkUser();
+    console.log(this.user)
   }
 }
