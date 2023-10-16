@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor( public auth: AuthService, private userTk: ManageUserTokensService ) {}
 
-  async ngOnInit(): Promise<void> {
-      await this.userTk.checkUser();
+  ngOnInit(): void {
+    this.userTk.checkUser();
   }
 }

@@ -12,8 +12,8 @@ export class DashboardHomeComponent implements OnInit {
   constructor(private userTk: ManageUserTokensService) {}
   user: UserObj | DocumentData = this.userTk.user;
   
-  async ngOnInit(): Promise<void> {
-    await this.userTk.checkUser();
+  ngOnInit(): void {
+    this.userTk.checkUser();
   }
 
   userTokens() {

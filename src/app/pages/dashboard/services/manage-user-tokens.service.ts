@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { AuthService } from '@auth0/auth0-angular';
-import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
+import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
 import { AuthObj, UserObj } from 'src/app/models/interfaces';
 
 @Injectable({
@@ -24,24 +24,24 @@ export class ManageUserTokensService {
     authId: ''
   }
 
-  async checkUser() {
+  checkUser(): void {
     this.auth.isAuthenticated$.subscribe(data => this.authObj.isLoggedIn = data);
     this.auth.user$.subscribe(data => this.authObj.authId = data?.sub);
 
     if (this.authObj.isLoggedIn && this.authObj.authId) {
         const usersRef = doc(this.fs, 'users', this.authObj.authId);
-        const docSnap = await getDoc(usersRef);
-        
-        if (!docSnap.exists()) {
-          this.addUser();
-          this.getUser();
-        } else {
-          this.getUser();
-        };
+        getDoc(usersRef).then(docSnap => {
+          if (!docSnap.exists()) {
+            this.addUser();
+            this.getUser();
+          } else {
+            this.getUser();
+          };
+        }).catch(err => console.log(err));
     };
   }
 
-  getUser() {
+  getUser(): void {
     if (this.authObj.isLoggedIn) { 
         collectionData(this.usersCollection).subscribe(data => {
           const foundUser: DocumentData[] = data.filter(user => user['id'] === this.authObj.authId);
@@ -51,12 +51,12 @@ export class ManageUserTokensService {
             this.user.name = foundUser[0]['name'];
             this.user.email = foundUser[0]['email'];
             this.user.tokens = foundUser[0]['tokens'];
-          } 
-        })
+          };
+        });
     }
   };
 
-  addUser() {
+  addUser(): void {
     this.auth.user$.subscribe(data => {
       if (data?.name && data.email && data.sub) {
         this.user.name = data.name;
@@ -65,7 +65,7 @@ export class ManageUserTokensService {
         this.user.tokens = 10;
       }
 
-      if (this.authObj.authId) 
+      if (this.authObj.isLoggedIn && this.authObj.authId) 
         setDoc(doc(this.fs, 'users', this.authObj.authId), {
            name: this.user.name,
            email: this.user.email,
@@ -77,7 +77,15 @@ export class ManageUserTokensService {
     })
   }
 
-  updateUser() {
-
+  async updateUserTokens(amount: number) {
+    if (this.authObj.isLoggedIn && this.authObj.authId) {
+      const userRef = doc(this.fs, 'users', this.authObj.authId);
+      try {
+        await updateDoc(userRef, { tokens: this.user.tokens + amount });
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+  };
   }
 }
