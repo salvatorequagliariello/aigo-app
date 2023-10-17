@@ -15,6 +15,8 @@ import { ImageAiService } from './services/image-ai.service';
 import { ManageUserTokensService } from './services/manage-user-tokens.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
+import { CartComponent } from './cart/cart.component';
+import { StripeService } from './services/stripe-service.service';
 
 
 
@@ -24,7 +26,8 @@ import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.compon
     AiChatComponent,
     CodeAiComponent,
     ImageAiComponent,
-    ProModalComponent
+    ProModalComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.compon
     CodeAiService,
     ImageAiService,
     ManageUserTokensService,
-    NgbModal
+    StripeService,
+    NgbModal,
   ]
 })
 export class DashboardModule { }
