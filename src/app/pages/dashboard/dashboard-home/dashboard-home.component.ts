@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 import { UserObj } from 'src/app/models/interfaces';
 import { DocumentData } from 'firebase/firestore';
@@ -20,4 +20,8 @@ export class DashboardHomeComponent implements OnInit {
     this.userTk.checkUser();
     console.log(this.user)
   }
+
+  // openVerticallyCentered(content: any) {
+	// 	this.modalService.open(content, { centered: true });
+	// }
 }

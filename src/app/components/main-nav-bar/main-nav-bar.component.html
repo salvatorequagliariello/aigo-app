@@ -7,11 +7,8 @@
         <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary fs-6">
             Sign In
         </button>
-        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-4 fs-6">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-2 fs-6 py-1">
             Log Out
-        </button>
-        <button (click)="showUser()" class="btn btn-primary rounded-4 fs-6">
-            User
         </button>
     </div>
 </div>
