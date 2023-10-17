@@ -12,6 +12,9 @@ import { CodeAiService } from './services/code-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { ImageAiComponent } from './image-ai/image-ai.component';
 import { ImageAiService } from './services/image-ai.service';
+import { ManageUserTokensService } from './services/manage-user-tokens.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
 
 
 
@@ -21,6 +24,7 @@ import { ImageAiService } from './services/image-ai.service';
     AiChatComponent,
     CodeAiComponent,
     ImageAiComponent,
+    ProModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { ImageAiService } from './services/image-ai.service';
   providers: [
     OpenAiService,
     CodeAiService,
-    ImageAiService
+    ImageAiService,
+    ManageUserTokensService,
+    NgbModal
   ]
 })
 export class DashboardModule { }

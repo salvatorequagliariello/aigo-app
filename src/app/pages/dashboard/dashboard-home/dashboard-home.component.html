@@ -13,4 +13,13 @@
             </li>
         </ul>
     </nav>
+    <div>
+        <p>Free tokens {{ user.tokens }}</p>
+        <button  class="btn btn-secondary" (click)="openVerticallyCentered(content)">
+            <a>Buy Tokens</a>
+        </button>
+    </div>
+    <ng-template #content let-modal>
+        <aigo-pro-modal [modal]="modal"></aigo-pro-modal>
+    </ng-template>
 </div>

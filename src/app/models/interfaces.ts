@@ -1,3 +1,4 @@
+import { DocumentData } from "firebase/firestore"
 
 export interface ResponseObj {
   loading: boolean,
@@ -12,4 +13,16 @@ export interface AmountObj {
 export interface ResolutionObj {
   value: string,
   label: string
+}
+
+export interface UserObj {
+  tokens: number,
+  name: string,
+  email: string,
+  id: string
+}
+
+export interface AuthObj {
+  isLoggedIn: boolean,
+  authId: string | undefined
 }
