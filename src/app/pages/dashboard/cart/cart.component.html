@@ -1,5 +1,19 @@
 <p>cart works!</p>
 
-<button (click)="onSubmit()">
-    pay
-</button>
+<form [formGroup]="cartForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column   gap-2 border border-secondary-subtle rounded p-3">
+    <div>
+        <input id="bronze" type="radio" value="23" name="packInput" formControlName="packInput">
+        <label for="bronze">Bronze Pack</label>
+    </div>
+    <div>
+        <input id="silver" type="radio" value="24" name="packInput" formControlName="packInput">
+        <label for="silver">Silver Pack</label>
+    </div>
+    <div>
+        <input id="gold" type="radio" value="25" name="packInput" formControlName="packInput">
+        <label for="gold">Gold Pack</label>
+    </div>
+    <button type="submit" class="btn btn-primary w-md-25 m-auto mt-2" [disabled]="!cartForm.valid">
+        Checkout
+    </button>
+</form>

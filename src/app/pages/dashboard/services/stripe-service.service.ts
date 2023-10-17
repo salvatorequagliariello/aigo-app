@@ -8,19 +8,26 @@ export class StripeService implements OnInit {
   stripe!: Stripe | null
   constructor() { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
   }
   
-  async getPayment() {
+  async getPayment(pack: string) {
     this.stripe = await loadStripe(import.meta.env.NG_APP_STRIPE_KEY);
-    this.stripe?.redirectToCheckout({
-      lineItems: [{
-        price: 'price_1O2FgpEtgAmqoL03xjzzFSfQ',
-        quantity: 1
-      }],
-      mode: 'payment',
-      successUrl: 'http://localhost:4200/dashboard/cart',
-      cancelUrl: 'http://localhost:4200/dashboard/cart'
-    }).then(response => console.log(response))
+
+    try {
+      const paymentResponse = await this.stripe?.redirectToCheckout({
+        lineItems: [{
+          price: 'price_1O2FgpEtgAmqoL03xjzzFSfQ',
+          quantity: 1
+        }],
+        mode: 'payment',
+        successUrl: 'http://localhost:4200/dashboard/cart',
+        cancelUrl: 'http://localhost:4200/dashboard/cart'
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }

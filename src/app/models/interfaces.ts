@@ -26,3 +26,8 @@ export interface AuthObj {
   isLoggedIn: boolean,
   authId: string | undefined
 }
+
+export interface PackObj {
+  id: string,
+  value: string
+}
