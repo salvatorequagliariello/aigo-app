@@ -29,8 +29,6 @@ export class AiChatComponent implements OnInit {
       const chatResponse = await this.openAi.getChatResponse(this.chatForm.value.chatInput, this.chat, this.response);
       this.userTk.updateUserTokens(-1);
       this.chatForm.reset(this.chatForm);
-    }
-
-    console.log(import.meta.env.NG_APP_AUTH_CLIENT_ID)
+    };
   }
 }

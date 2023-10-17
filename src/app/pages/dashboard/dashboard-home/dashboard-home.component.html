@@ -15,20 +15,11 @@
     </nav>
     <div>
         <p>Free tokens {{ user.tokens }}</p>
-        <button  class="btn btn-secondary">
+        <button  class="btn btn-secondary" (click)="openVerticallyCentered(content)">
             <a>Buy Tokens</a>
         </button>
     </div>
     <ng-template #content let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title">Modal title</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-        </div>
-        <div class="modal-body">
-            <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-        </div>
+        <aigo-pro-modal [modal]="modal"></aigo-pro-modal>
     </ng-template>
 </div>

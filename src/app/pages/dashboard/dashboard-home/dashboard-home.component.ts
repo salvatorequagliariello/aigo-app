@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 import { UserObj } from 'src/app/models/interfaces';
 import { DocumentData } from 'firebase/firestore';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'aigo-dashboard-home',
@@ -9,7 +10,7 @@ import { DocumentData } from 'firebase/firestore';
   styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
-  constructor(private userTk: ManageUserTokensService) {}
+  constructor(private userTk: ManageUserTokensService, private modalService: NgbModal) {}
   user: UserObj | DocumentData = this.userTk.user;
   
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class DashboardHomeComponent implements OnInit {
     console.log(this.user)
   }
 
-  // openVerticallyCentered(content: any) {
-	// 	this.modalService.open(content, { centered: true });
-	// }
+  openVerticallyCentered(content: any) {
+		this.modalService.open(content, { centered: true });
+	}
 }
