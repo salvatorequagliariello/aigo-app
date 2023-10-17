@@ -16,6 +16,7 @@ import { ManageUserTokensService } from './services/manage-user-tokens.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
 import { CartComponent } from './cart/cart.component';
+import { StripeService } from './services/stripe-service.service';
 
 
 
@@ -41,7 +42,8 @@ import { CartComponent } from './cart/cart.component';
     CodeAiService,
     ImageAiService,
     ManageUserTokensService,
-    NgbModal
+    StripeService,
+    NgbModal,
   ]
 })
 export class DashboardModule { }

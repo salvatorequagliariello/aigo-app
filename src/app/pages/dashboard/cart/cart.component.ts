@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StripeService } from '../services/stripe-service.service';
 
 @Component({
   selector: 'aigo-cart',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class CartComponent {
 
+  constructor(private stripe: StripeService) {}
+
+  async onSubmit() {
+    await this.stripe.getPayment();
+  }
 }
