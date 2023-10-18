@@ -1,22 +1,19 @@
-<div class="m-auto w-75">
-    <div>
-        <h1>AIgo Chat</h1>
-        <p>Our most advanced conversation model.</p>
-    </div>
-    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column gap-2 border border-secondary-subtle rounded p-3">
+<div class="m-auto w-75 mt-5">
+    <aigo-ai-header title="AIgo Chat" description="Our most advanced conversation model." [icon]="messageIcon"></aigo-ai-header>
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column gap-2 border border-light border-2 rounded-4 p-3 mt-3">
         <div>
             <textarea 
                 type="textbox" 
                 name="chatInput" 
                 formControlName="chatInput"
                 id="chatInput" 
-                class="form-control h-50 border-0" 
-                style="resize: none;" 
+                class="form-control h-50 border-0 text-light" 
+                style="resize: none; background: none;" 
                 placeholder="How do i calculate the radius of a circle?"
             >
             </textarea>
         </div>
-        <button type="submit" class="btn btn-primary w-md-25 m-auto mt-2" [disabled]="!chatForm.valid">
+        <button type="submit" class="btn border border-light border-2 rounded-4 w-25 m-auto mt-2 text-light" [disabled]="!chatForm.valid">
             Generate
         </button>
     </form>
@@ -40,11 +37,6 @@
                 Loading
             </p>
         </ul>
-    </div>
-    <div>
-        <button  class="btn btn-secondary" (click)="openVerticallyCentered(content)">
-            <a routerLink="cart">Buy Tokens</a>
-        </button>
     </div>
     <ng-template #content let-modal>
         <aigo-pro-modal [modal]="modal"></aigo-pro-modal>

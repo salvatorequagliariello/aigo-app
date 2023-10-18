@@ -33,3 +33,8 @@ export interface PackObj {
   price: string,
   name: string
 }
+
+export interface IconObj {
+  pathOne: string,
+  pathTwo?: string
+}
