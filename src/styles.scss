@@ -1,7 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-$red: red;
 
-/* Importing Bootstrap SCSS file. */
+$red: red;
 $theme-colors: (
     "primary":    #0E6EFD,
     "secondary":  #6D757D,
@@ -16,12 +14,16 @@ $theme-colors: (
     "cl-purple-accent": #B997FF
 );
     
-@import 'bootstrap/scss/bootstrap';
 
 body {
-    background-color: #212529;
+    min-height: 100vh;
+    background-image: linear-gradient(151deg, rgba(15,6,19,1) 0%, rgba(29,8,29,1) 63%, rgba(62,34,69,1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 a {
     text-decoration: inherit; /* no underline */
 }
+
+@import 'bootstrap/scss/bootstrap';

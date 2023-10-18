@@ -1,17 +1,20 @@
-<div class="m-auto bg-dark text-light d-flex gap-2 d-flex align-items-center justify-content-between px-5 py-3">
+<div class="m-auto text-light d-flex gap-2 d-flex align-items-center justify-content-between px-5 py-3">
     <div *ngIf="(auth.isAuthenticated$ | async) === true">
-        <a class="btn d-flex align-items-center gap-2 p-2 border border-primary-emphasis" routerLink="cart">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" fill="currentColor" class="bi bi-lightning-charge-fill m-0 lh-sm text-light">
-                <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
-            </svg>
-            <p class="text-light align-middle">Tokens {{ user.tokens }}</p>
+        <a routerLink="cart">
+            <button class="btn border border-primary-emphasis border-1 py-1 text-light d-flex align-items-center gap-2">
+                Tokens 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+                    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                </svg>
+                {{ user.tokens }}
+            </button>
         </a>
     </div>
     <div class="d-flex gap-2">
         <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary fs-6">
             Sign In
         </button>
-        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn btn-danger rounded-2 fs-6 py-1">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn border border-danger border-1 text-danger">
             Log Out
         </button>
     </div>
