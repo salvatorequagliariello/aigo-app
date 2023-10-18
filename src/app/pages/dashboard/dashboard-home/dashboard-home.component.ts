@@ -21,8 +21,4 @@ export class DashboardHomeComponent implements OnInit {
     this.userTk.checkUser();
     console.log(this.user)
   }
-
-  openVerticallyCentered(content: any) {
-		this.modalService.open(content, { centered: true });
-	}
 }

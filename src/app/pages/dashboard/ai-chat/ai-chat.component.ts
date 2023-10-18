@@ -4,6 +4,7 @@ import { OpenAiService } from '../services/open-ai.service';
 import { ChatCompletionMessage } from 'openai/resources/chat';
 import { ResponseObj } from 'src/app/models/interfaces';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'aigo-ai-chat',
@@ -13,7 +14,7 @@ import { ManageUserTokensService } from '../services/manage-user-tokens.service'
 export class AiChatComponent implements OnInit {
   chatForm!: FormGroup
   
-  constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService ) {}
+  constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService, private modalService: NgbModal ) {}
   
   ngOnInit(): void {
     this.chatForm = new FormGroup({
@@ -23,6 +24,10 @@ export class AiChatComponent implements OnInit {
   
   chat: ChatCompletionMessage[] = this.openAi.messages
   response: ResponseObj =  this.openAi.response;
+
+  openVerticallyCentered(content: any) {
+		this.modalService.open(content, { centered: true });
+	}
   
   async onSubmit() {
     if (this.chatForm.valid) {

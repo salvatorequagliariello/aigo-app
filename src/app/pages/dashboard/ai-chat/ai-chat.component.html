@@ -41,4 +41,12 @@
             </p>
         </ul>
     </div>
+    <div>
+        <button  class="btn btn-secondary" (click)="openVerticallyCentered(content)">
+            <a routerLink="cart">Buy Tokens</a>
+        </button>
+    </div>
+    <ng-template #content let-modal>
+        <aigo-pro-modal [modal]="modal"></aigo-pro-modal>
+    </ng-template>
 </div>
