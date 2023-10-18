@@ -29,5 +29,7 @@ export interface AuthObj {
 
 export interface PackObj {
   id: string,
-  value: string
+  value: string,
+  price: string,
+  name: string
 }

@@ -7,6 +7,8 @@ import { AiChatComponent } from './pages/dashboard/ai-chat/ai-chat.component';
 import { CodeAiComponent } from './pages/dashboard/code-ai/code-ai.component';
 import { ImageAiComponent } from './pages/dashboard/image-ai/image-ai.component';
 import { CartComponent } from './pages/dashboard/cart/cart.component';
+import { CartSuccessComponent } from './pages/dashboard/cart-success/cart-success.component';
+import { CartErrorComponent } from './pages/dashboard/cart-error/cart-error.component';
 
 const routes: Routes = [
   { 
@@ -33,7 +35,15 @@ const routes: Routes = [
   {
     path: 'dashboard/cart', 
     component: CartComponent
-  }
+  },
+  {
+    path: 'dashboard/checkout-success', 
+    component: CartSuccessComponent
+  },
+  {
+    path: 'dashboard/checkout-error', 
+    component: CartErrorComponent
+  },
 ];
 
 @NgModule({

@@ -12,9 +12,7 @@ import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fi
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { ProModalComponent } from './components/pro-modal/pro-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CartComponent } from './pages/dashboard/cart/cart.component';
 
 @NgModule({
   declarations: [

@@ -17,17 +17,20 @@ export class StripeService implements OnInit {
     try {
       const paymentResponse = await this.stripe?.redirectToCheckout({
         lineItems: [{
-          price: 'price_1O2FgpEtgAmqoL03xjzzFSfQ',
+          price: pack,
           quantity: 1
         }],
         mode: 'payment',
-        successUrl: 'http://localhost:4200/dashboard/cart',
-        cancelUrl: 'http://localhost:4200/dashboard/cart'
+        successUrl: 'http://localhost:4200/dashboard/checkout-success',
+        cancelUrl: 'http://localhost:4200/dashboard/checkout-failure'
       });
 
     } catch (error) {
       console.log(error);
     }
+  }
 
+  async checkPayment() {
+    this.stripe = await loadStripe(import.meta.env.NG_APP_STRIPE_KEY);
   }
 }

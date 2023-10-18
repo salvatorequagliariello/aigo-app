@@ -17,6 +17,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
 import { CartComponent } from './cart/cart.component';
 import { StripeService } from './services/stripe-service.service';
+import { CartSuccessComponent } from './cart-success/cart-success.component';
+import { CartErrorComponent } from './cart-error/cart-error.component';
 
 
 
@@ -27,7 +29,9 @@ import { StripeService } from './services/stripe-service.service';
     CodeAiComponent,
     ImageAiComponent,
     ProModalComponent,
-    CartComponent
+    CartComponent,
+    CartSuccessComponent,
+    CartErrorComponent
   ],
   imports: [
     BrowserModule,
