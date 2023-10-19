@@ -1,0 +1,62 @@
+.chat-message {
+    width: 90%;
+    margin-left: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.dot-collision {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+}
+.dot-collision::before, .dot-collision::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+.dot-collision::before {
+    left: -10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-collision-before 2s infinite ease-in;
+}
+
+.dot-collision::after {
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-collision-after 2s infinite ease-in;
+    animation-delay: 1s;
+}
+  
+@keyframes dot-collision-before {
+    0%, 50%, 75%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-15px);
+    }
+}
+
+@keyframes dot-collision-after {
+    0%, 50%, 75%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(15px);
+    }
+}
