@@ -17,9 +17,10 @@ export class AiChatComponent implements OnInit {
   constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService, private modalService: NgbModal ) {}
   
   ngOnInit(): void {
+    this.userTk.checkUser();
     this.chatForm = new FormGroup({
       chatInput: new FormControl('', Validators.required)
-    }) 
+    });
   }
   
   chat: ChatCompletionMessage[] = this.openAi.messages

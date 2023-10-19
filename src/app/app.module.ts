@@ -15,6 +15,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AiHeaderComponent } from './components/ai-header/ai-header.component';
 import { EmptyGenerationComponent } from './components/empty-generation/empty-generation.component';
+import { GenerationErrorAlertComponent } from './components/generation-error-alert/generation-error-alert.component';
 
 @NgModule({
   declarations: [

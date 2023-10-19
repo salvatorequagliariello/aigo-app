@@ -13,7 +13,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ImageAiComponent } from './image-ai/image-ai.component';
 import { ImageAiService } from './services/image-ai.service';
 import { ManageUserTokensService } from './services/manage-user-tokens.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlert, NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
 import { CartComponent } from './cart/cart.component';
 import { StripeService } from './services/stripe-service.service';
@@ -21,6 +21,7 @@ import { CartSuccessComponent } from './cart-success/cart-success.component';
 import { CartErrorComponent } from './cart-error/cart-error.component';
 import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.component';
 import { EmptyGenerationComponent } from 'src/app/components/empty-generation/empty-generation.component';
+import { GenerationErrorAlertComponent } from 'src/app/components/generation-error-alert/generation-error-alert.component';
 
 
 
@@ -35,7 +36,8 @@ import { EmptyGenerationComponent } from 'src/app/components/empty-generation/em
     CartSuccessComponent,
     CartErrorComponent,
     AiHeaderComponent,
-    EmptyGenerationComponent
+    EmptyGenerationComponent,
+    GenerationErrorAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { EmptyGenerationComponent } from 'src/app/components/empty-generation/em
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
   providers: [
     OpenAiService,
@@ -51,7 +53,6 @@ import { EmptyGenerationComponent } from 'src/app/components/empty-generation/em
     ImageAiService,
     ManageUserTokensService,
     StripeService,
-    NgbModal,
   ]
 })
 export class DashboardModule { }
