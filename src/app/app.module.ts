@@ -14,12 +14,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AiHeaderComponent } from './components/ai-header/ai-header.component';
+import { EmptyGenerationComponent } from './components/empty-generation/empty-generation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    MainNavBarComponent,
+    MainNavBarComponent
   ],
   imports: [
     BrowserModule,

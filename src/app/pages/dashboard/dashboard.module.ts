@@ -20,6 +20,7 @@ import { StripeService } from './services/stripe-service.service';
 import { CartSuccessComponent } from './cart-success/cart-success.component';
 import { CartErrorComponent } from './cart-error/cart-error.component';
 import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.component';
+import { EmptyGenerationComponent } from 'src/app/components/empty-generation/empty-generation.component';
 
 
 
@@ -33,7 +34,8 @@ import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.compon
     CartComponent,
     CartSuccessComponent,
     CartErrorComponent,
-    AiHeaderComponent
+    AiHeaderComponent,
+    EmptyGenerationComponent
   ],
   imports: [
     BrowserModule,

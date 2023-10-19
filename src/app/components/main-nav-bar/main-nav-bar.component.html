@@ -1,14 +1,14 @@
 <div class="m-auto text-light d-flex gap-2 d-flex align-items-center justify-content-between px-5 py-3">
     <div *ngIf="(auth.isAuthenticated$ | async) === true" class="d-flex gap-2">
         <a routerLink="dashboard">
-            <button class="btn border border-primary-emphasis border-1 py-1 text-light d-flex align-items-center h-100">
+            <button class="btn border border-primary-emphasis border-1 py-1 text-light d-flex align-items-center h-100 hov-purple">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
                 </svg>
             </button>
         </a>
         <a routerLink="cart">
-            <button class="btn border border-primary-emphasis border-1 py-1 text-light d-flex align-items-center gap-2">
+            <button class="btn border border-primary-emphasis border-1 py-1 text-light d-flex align-items-center gap-2 hov-purple">
                 <span class="d-none d-sm-inline">
                     Tokens 
                 </span>

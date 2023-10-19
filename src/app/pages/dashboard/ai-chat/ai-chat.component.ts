@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'aigo-ai-chat',
   templateUrl: './ai-chat.component.html',
-  styleUrls: ['./ai-chat.component.css']
+  styleUrls: ['./ai-chat.component.scss']
 })
 export class AiChatComponent implements OnInit {
   chatForm!: FormGroup

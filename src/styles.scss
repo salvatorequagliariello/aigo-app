@@ -1,3 +1,5 @@
+$link-decoration: none;
+$input-placeholder-color: #f8f9fa45;
 
 $red: red;
 $theme-colors: (
@@ -14,7 +16,6 @@ $theme-colors: (
     "cl-purple-accent": #B997FF
 );
     
-
 body {
     min-height: 100vh;
     background-image: linear-gradient(151deg, rgba(15,6,19,1) 0%, rgba(29,8,29,1) 63%, rgba(62,34,69,1) 100%);
@@ -23,7 +24,14 @@ body {
 }
 
 a {
-    text-decoration: inherit; /* no underline */
+    text-decoration: none !important; /* no underline */
+}
+
+.hov-purple:hover {
+    background-image: linear-gradient(151deg,rgba(62,34,69,1) 0%, rgba(29,8,29,1) 25%, rgba(15,6,19,1) 100%,);
+    box-shadow: 0 8px 32px 0 rgba(55, 29, 62, 0.5);
+    backdrop-filter: blur( 18px );
+    -webkit-backdrop-filter: blur( 18px );
 }
 
 @import 'bootstrap/scss/bootstrap';
