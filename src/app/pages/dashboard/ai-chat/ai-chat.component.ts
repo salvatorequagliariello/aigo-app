@@ -14,7 +14,10 @@ export class AiChatComponent implements OnInit {
   chatForm!: FormGroup
   @ViewChild('noTkMsg') noTkMsg!: ElementRef<HTMLInputElement>;
   isTokenAlertOpen: boolean = false;
-
+  chat: ChatCompletionMessage[] = this.openAi.messages
+  response: ResponseObj =  this.openAi.response;
+  apiError: boolean = this.response.errorMessage ? true : false;
+  
   constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService, ) {}
   
   ngOnInit(): void {
@@ -23,9 +26,6 @@ export class AiChatComponent implements OnInit {
       chatInput: new FormControl('', Validators.required)
     });
   }
-  
-  chat: ChatCompletionMessage[] = this.openAi.messages
-  response: ResponseObj =  this.openAi.response;
   
   async onSubmit() {
     if (this.chatForm.valid && this.userTk.user.tokens >= 1) {
@@ -41,6 +41,10 @@ export class AiChatComponent implements OnInit {
 
   closeAlert(isOpen: boolean) {
     this.isTokenAlertOpen = isOpen;
+  }
+
+  closeApiErrorAlert(isOpen: boolean) {
+    this.apiError = isOpen;
   }
 
   messageIcon: IconObj = {

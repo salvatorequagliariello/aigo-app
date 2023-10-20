@@ -21,20 +21,26 @@
         </button>
     </form>
 
-    <aigo-generation-error-alert class="my" [open]="isTokenAlertOpen" (newItemEvent)="closeAlert($event)"></aigo-generation-error-alert>
-
+    <aigo-generation-error-alert [open]="isTokenAlertOpen" (newItemEvent)="closeAlert($event)"></aigo-generation-error-alert>
+    <aigo-app-error-alert [open]="apiError" (newItemEvent)="closeApiErrorAlert($event)"></aigo-app-error-alert>
+    
     <div class="mt-3">
-        <div *ngIf="response.errorMessage">
-            <p>
-                {{ response.errorMessage }}
-            </p>
-        </div>
-
         <div *ngIf="chat.length >= 1" class="w-100 m-0 p-0 text-light p-2 mt-5"> 
             <h3>Conversation</h3>
             <ul class="text-light w-100 d-flex flex-column">
+                <div 
+                    *ngIf="response.loading" 
+                    class="ml-0 my-2 p-2 border rounded border-light border-2 rounded-4 chat-message align-self-start d-flex align-items-center justify-content-start gap-3 system"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                        <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+                    </svg>
+                    Thinking...
+                    <div class="dot-carousel"></div>
+                </div>
                 <li 
-                *ngFor="let message of chat" 
+                *ngFor="let message of chat.slice().reverse()" 
                 class="m-0 my-2 p-2 border rounded border-light border-2 rounded-4 chat-message d-flex"
                 [ngClass]="message.role === 'user' ? 
                 'align-self-end text-end align-items-center justify-content-end gap-3' : 
@@ -54,17 +60,6 @@
                     </svg>
                 </div>
                 </li>
-                <div 
-                    *ngIf="response.loading" 
-                    class="ml-0 my-2 p-2 border rounded border-light border-2 rounded-4 chat-message align-self-start d-flex align-items-center justify-content-start gap-3 system"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cpu-fill" viewBox="0 0 16 16">
-                        <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-                        <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
-                    </svg>
-                    Thinking...
-                    <div class="dot-carousel"></div>
-                </div>
             </ul>
         </div>
 
@@ -72,8 +67,4 @@
             <aigo-empty-generation message="No conversation started." imageUrl="assets/undraw_popular_re_mlfe.svg" ></aigo-empty-generation>
         </div>
     </div>
-
-    <ng-template #content let-modal>
-        <aigo-pro-modal [modal]="modal"></aigo-pro-modal>
-    </ng-template>
 </div>

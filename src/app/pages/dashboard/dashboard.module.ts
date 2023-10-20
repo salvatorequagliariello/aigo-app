@@ -21,6 +21,7 @@ import { CartErrorComponent } from './cart-error/cart-error.component';
 import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.component';
 import { EmptyGenerationComponent } from 'src/app/components/empty-generation/empty-generation.component';
 import { GenerationErrorAlertComponent } from 'src/app/components/generation-error-alert/generation-error-alert.component';
+import { AppErrorAlertComponent } from 'src/app/components/app-error-alert/app-error-alert.component';
 
 
 
@@ -36,7 +37,8 @@ import { GenerationErrorAlertComponent } from 'src/app/components/generation-err
     CartErrorComponent,
     AiHeaderComponent,
     EmptyGenerationComponent,
-    GenerationErrorAlertComponent
+    GenerationErrorAlertComponent,
+    AppErrorAlertComponent
   ],
   imports: [
     BrowserModule,

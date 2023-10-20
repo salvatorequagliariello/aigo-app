@@ -13,12 +13,13 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AppErrorAlertComponent } from './components/app-error-alert/app-error-alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    MainNavBarComponent
+    MainNavBarComponent,
   ],
   imports: [
     BrowserModule,
