@@ -12,7 +12,6 @@ import { ManageUserTokensService } from '../services/manage-user-tokens.service'
 })
 export class AiChatComponent implements OnInit {
   chatForm!: FormGroup
-  @ViewChild('noTkMsg') noTkMsg!: ElementRef<HTMLInputElement>;
   isTokenAlertOpen: boolean = false;
   chat: ChatCompletionMessage[] = this.openAi.messages
   response: ResponseObj =  this.openAi.response;

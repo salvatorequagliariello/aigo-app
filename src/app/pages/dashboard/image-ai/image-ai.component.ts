@@ -3,11 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AmountObj, IconObj, ResponseObj } from 'src/app/models/interfaces';
 import { ImageAiService } from '../services/image-ai.service';
 import { Image } from 'openai/resources';
+import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 
 @Component({
   selector: 'aigo-image-ai',
   templateUrl: './image-ai.component.html',
-  styleUrls: ['./image-ai.component.css']
+  styleUrls: ['./image-ai.component.scss']
 })
 export class ImageAiComponent {
   chatForm!: FormGroup
@@ -15,10 +16,13 @@ export class ImageAiComponent {
   response: ResponseObj =  this.imageAi.response;
   amountOptions: AmountObj[] = this.imageAi.amountOptions;
   resolutionOptions: AmountObj[] = this.imageAi.resolutionOptions;
-  
-  constructor( private imageAi: ImageAiService ) {}
+  apiError: boolean = this.response.errorMessage ? true : false;
+  isTokenAlertOpen: boolean = false;
+
+  constructor( private imageAi: ImageAiService, private userTk: ManageUserTokensService ) {}
 
   ngOnInit(): void {
+    this.userTk.checkUser();
     this.chatForm = new FormGroup({
       prompt: new FormControl('', Validators.required),
       amount: new FormControl('', Validators.required),
@@ -27,10 +31,23 @@ export class ImageAiComponent {
   }
   
   async onSubmit() {
-    if (this.chatForm.valid) {
+    if (this.chatForm.valid && this.userTk.user.tokens >= 1) {
       const chatResponse = await this.imageAi.getImageGeneration(this.chatForm.value.prompt, this.images, this.response, this.chatForm.value.resolution, this.chatForm.value.amount);
+      this.userTk.updateUserTokens(-1);
       this.chatForm.reset(this.chatForm);
+    } else if (this.userTk.user.tokens <= 0) {
+      this.isTokenAlertOpen = true;
+    } else {
+      return;
     }
+  }
+
+  closeTokensAlert(isOpen: boolean) {
+    this.isTokenAlertOpen = isOpen;
+  }
+
+  closeApiErrorAlert(isOpen: boolean) {
+    this.apiError = isOpen;
   }
 
   imageIcon: IconObj = {
