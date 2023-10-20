@@ -1,0 +1,39 @@
+.chat-message {
+    width: 90%;
+    margin-left: 0;
+}
+
+.codeAi-chat-message {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.dot-carousel {
+    position: relative;
+    margin-left: 1rem;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #F8F9FA,;
+    color: #F8F9FA,;
+    box-shadow: 9984px 0 0 0 #F8F9FA, 9999px 0 0 0 #F8F9FA, 10014px 0 0 0 #F8F9FA;
+    animation: dot-carousel 1.5s infinite linear;
+}
+  
+@keyframes dot-carousel {
+    0% {
+      box-shadow: 9984px 0 0 -1px #F8F9FA, 9999px 0 0 1px #F8F9FA, 10014px 0 0 -1px #F8F9FA;
+    }
+    50% {
+      box-shadow: 10014px 0 0 -1px #F8F9FA, 9984px 0 0 -1px #F8F9FA, 9999px 0 0 1px #F8F9FA;
+    }
+    100% {
+      box-shadow: 9999px 0 0 1px #F8F9FA, 10014px 0 0 -1px #F8F9FA, 9984px 0 0 -1px #F8F9FA;
+    }
+}
