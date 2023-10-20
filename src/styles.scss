@@ -1,7 +1,33 @@
+//Shared Major classes
+//Shared Major classes
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(151deg, rgba(15,6,19,1) 0%, rgba(29,8,29,1) 63%, rgba(62,34,69,1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.max-container {
+    max-width: 1920px;
+}
+
+
+// Shared minor classes
+// Shared minor classes
+.hov-purple:hover {
+    background-image: linear-gradient(151deg,rgba(62,34,69,1) 0%, rgba(29,8,29,1) 25%, rgba(15,6,19,1) 100%,);
+    box-shadow: 0 8px 32px 0 rgba(55, 29, 62, 0.5);
+    backdrop-filter: blur( 18px );
+    -webkit-backdrop-filter: blur( 18px );
+    cursor: pointer;
+}
+
+
+// Bootstrap custom properties
+// Bootstrap custom properties
 $link-decoration: none;
 $input-placeholder-color: #f8f9fa45;
 
-$red: red;
 $theme-colors: (
     "primary":    #0E6EFD,
     "secondary":  #6D757D,
@@ -12,30 +38,13 @@ $theme-colors: (
     "light":      #F8F9FA,
     "dark":       #212529,
     "cl-dark-primary": red,
-    "cl-dark-secondary": $red,
     "cl-purple-accent": #B997FF
 );
-    
-body {
-    min-height: 100vh;
-    background-image: linear-gradient(151deg, rgba(15,6,19,1) 0%, rgba(29,8,29,1) 63%, rgba(62,34,69,1) 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-a {
-    text-decoration: none !important; /* no underline */
-}
-
-.hov-purple:hover {
-    background-image: linear-gradient(151deg,rgba(62,34,69,1) 0%, rgba(29,8,29,1) 25%, rgba(15,6,19,1) 100%,);
-    box-shadow: 0 8px 32px 0 rgba(55, 29, 62, 0.5);
-    backdrop-filter: blur( 18px );
-    -webkit-backdrop-filter: blur( 18px );
-}
-
-.max-container {
-    max-width: 1920px;
+// Bootstrap reset
+// Bootstrap reset
+select {
+    cursor: pointer;
 }
 
 ul, li {
@@ -43,6 +52,10 @@ ul, li {
     padding: 0;
     margin: 0;
     display: inline;
+}
+
+a {
+    text-decoration: none !important; /* no underline */
 }
 
 @import 'bootstrap/scss/bootstrap';
