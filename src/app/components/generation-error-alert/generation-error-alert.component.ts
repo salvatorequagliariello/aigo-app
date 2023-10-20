@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 interface Alert {
 	type: string;
@@ -11,7 +11,13 @@ interface Alert {
   styleUrls: ['./generation-error-alert.component.scss']
 })
 export class GenerationErrorAlertComponent {
+  @Input({ required: true }) open!: boolean
+  @Output() newItemEvent = new EventEmitter<boolean>();
 
+  
   constructor() {}
-
+  
+  closeAlert() {
+    this.newItemEvent.emit(!this.open);
+  }
 }

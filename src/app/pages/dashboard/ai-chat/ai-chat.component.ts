@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OpenAiService } from '../services/open-ai.service';
 import { ChatCompletionMessage } from 'openai/resources/chat';
 import { IconObj, ResponseObj } from 'src/app/models/interfaces';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'aigo-ai-chat',
@@ -13,8 +12,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AiChatComponent implements OnInit {
   chatForm!: FormGroup
-  
-  constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService, private modalService: NgbModal ) {}
+  @ViewChild('noTkMsg') noTkMsg!: ElementRef<HTMLInputElement>;
+  isTokenAlertOpen: boolean = false;
+
+  constructor( private openAi: OpenAiService, private userTk: ManageUserTokensService, ) {}
   
   ngOnInit(): void {
     this.userTk.checkUser();
@@ -25,17 +26,21 @@ export class AiChatComponent implements OnInit {
   
   chat: ChatCompletionMessage[] = this.openAi.messages
   response: ResponseObj =  this.openAi.response;
-
-  openVerticallyCentered(content: any) {
-		this.modalService.open(content, { centered: true });
-	}
   
   async onSubmit() {
-    if (this.chatForm.valid) {
+    if (this.chatForm.valid && this.userTk.user.tokens >= 1) {
       const chatResponse = await this.openAi.getChatResponse(this.chatForm.value.chatInput, this.chat, this.response);
       this.userTk.updateUserTokens(-1);
       this.chatForm.reset(this.chatForm);
-    };
+    } else if (this.userTk.user.tokens <= 0) {
+      this.isTokenAlertOpen = true;
+    } else {
+      return;
+    }
+  }
+
+  closeAlert(isOpen: boolean) {
+    this.isTokenAlertOpen = isOpen;
   }
 
   messageIcon: IconObj = {
