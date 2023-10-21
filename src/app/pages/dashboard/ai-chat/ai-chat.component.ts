@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OpenAiService } from '../services/open-ai.service';
 import { ChatCompletionMessage } from 'openai/resources/chat';
@@ -10,7 +10,7 @@ import { ManageUserTokensService } from '../services/manage-user-tokens.service'
   templateUrl: './ai-chat.component.html',
   styleUrls: ['./ai-chat.component.scss']
 })
-export class AiChatComponent implements OnInit {
+export class AiChatComponent implements OnInit, OnDestroy {
   chatForm!: FormGroup
   isTokenAlertOpen: boolean = false;
   chat: ChatCompletionMessage[] = this.openAi.messages
@@ -24,6 +24,10 @@ export class AiChatComponent implements OnInit {
     this.chatForm = new FormGroup({
       chatInput: new FormControl('', Validators.required)
     });
+  }
+
+  ngOnDestroy(): void {
+      this.chat.length = 0;
   }
   
   async onSubmit() {

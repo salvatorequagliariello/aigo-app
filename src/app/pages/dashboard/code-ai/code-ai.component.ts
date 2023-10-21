@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CodeAiService } from '../services/code-ai.service';
 import { ChatCompletionMessage } from 'openai/resources/chat';
@@ -10,7 +10,7 @@ import { ManageUserTokensService } from '../services/manage-user-tokens.service'
   templateUrl: './code-ai.component.html',
   styleUrls: ['./code-ai.component.scss']
 })
-export class CodeAiComponent {
+export class CodeAiComponent implements OnInit, OnDestroy {
   chatForm!: FormGroup
   chat: ChatCompletionMessage[] = this.codeAi.messages
   response: ResponseObj =  this.codeAi.response;
@@ -24,6 +24,10 @@ export class CodeAiComponent {
     this.chatForm = new FormGroup({
       chatInput: new FormControl('', Validators.required)
     }) 
+  }
+
+  ngOnDestroy(): void {
+    this.chat.length = 0;
   }
   
   async onSubmit() {

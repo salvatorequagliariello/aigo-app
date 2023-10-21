@@ -33,13 +33,18 @@ export class ImageAiComponent {
   async onSubmit() {
     if (this.chatForm.valid && this.userTk.user.tokens >= 1) {
       const chatResponse = await this.imageAi.getImageGeneration(this.chatForm.value.prompt, this.images, this.response, this.chatForm.value.resolution, this.chatForm.value.amount);
-      this.userTk.updateUserTokens(-1);
+      const tokensToPay = this.chatForm.value.amount * 2;
+      this.userTk.updateUserTokens(-tokensToPay);
       this.chatForm.reset(this.chatForm);
     } else if (this.userTk.user.tokens <= 0) {
       this.isTokenAlertOpen = true;
     } else {
       return;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.images.length = 0;
   }
 
   closeTokensAlert(isOpen: boolean) {
