@@ -8,6 +8,6 @@ import { IconObj } from 'src/app/models/interfaces';
 })
 export class AiHeaderComponent {
   @Input({ required: true }) title!: string;
-  @Input({ required: true }) description!: string;
-  @Input({ required: true }) icon!: IconObj;
+  @Input() description!: string;
+  @Input() icon!: IconObj;
 }

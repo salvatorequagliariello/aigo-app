@@ -31,7 +31,9 @@ export interface PackObj {
   id: string,
   value: string,
   price: string,
-  name: string
+  name: string,
+  tokens: number,
+  imageUrl: string
 }
 
 export interface IconObj {

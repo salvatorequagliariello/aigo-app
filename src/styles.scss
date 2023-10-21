@@ -2,7 +2,7 @@
 //Shared Major classes
 body {
     min-height: 100vh;
-    background-image: linear-gradient(151deg, rgba(15,6,19,1) 0%, rgba(29,8,29,1) 63%, rgba(62,34,69,1) 100%);
+    background-image: linear-gradient(to right bottom, #3e2245, #302341, #25223a, #1c2031, #181d27, #181d27, #181d27, #181d27, #1c2031, #25223a, #302341, #3e2245);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -15,10 +15,11 @@ body {
 // Shared minor classes
 // Shared minor classes
 .hov-purple:hover {
-    background-image: linear-gradient(151deg,rgba(62,34,69,1) 0%, rgba(29,8,29,1) 25%, rgba(15,6,19,1) 100%,);
-    box-shadow: 0 8px 32px 0 rgba(55, 29, 62, 0.5);
-    backdrop-filter: blur( 18px );
-    -webkit-backdrop-filter: blur( 18px );
+    background: rgba(255,255,255,0.4);
+    z-index:1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     cursor: pointer;
 }
 
