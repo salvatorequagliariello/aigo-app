@@ -52,8 +52,12 @@ export class CartComponent implements OnInit {
     };
   }
 
-  print(value: string) {
-    console.log(value)
+  changeButtonStyle(element: string) {
+    const elements: string[] = this.packs.map(pack => pack.name);
+    elements.forEach(elt => {
+      document.getElementById(elt)?.classList.remove("selected-pack");
+    })
+    document.getElementById(element)?.classList.add("selected-pack");
   }
 
   cartIcon: IconObj = {
