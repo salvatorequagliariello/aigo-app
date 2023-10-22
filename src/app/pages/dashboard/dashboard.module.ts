@@ -22,6 +22,7 @@ import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.compon
 import { EmptyGenerationComponent } from 'src/app/components/empty-generation/empty-generation.component';
 import { GenerationErrorAlertComponent } from 'src/app/components/generation-error-alert/generation-error-alert.component';
 import { AppErrorAlertComponent } from 'src/app/components/app-error-alert/app-error-alert.component';
+import { DashboardModelLinkComponent } from 'src/app/components/dashboard-model-link/dashboard-model-link.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AppErrorAlertComponent } from 'src/app/components/app-error-alert/app-e
     AiHeaderComponent,
     EmptyGenerationComponent,
     GenerationErrorAlertComponent,
-    AppErrorAlertComponent
+    AppErrorAlertComponent,
+    DashboardModelLinkComponent
   ],
   imports: [
     BrowserModule,

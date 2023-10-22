@@ -40,3 +40,10 @@ export interface IconObj {
   pathOne: string,
   pathTwo?: string
 }
+
+export interface ModelLinkObj {
+  name: string,
+  description: string,
+  link: string,
+  icon: IconObj
+}
