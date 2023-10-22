@@ -24,7 +24,6 @@ import { GenerationErrorAlertComponent } from 'src/app/components/generation-err
 import { AppErrorAlertComponent } from 'src/app/components/app-error-alert/app-error-alert.component';
 
 
-
 @NgModule({
   declarations: [
     DashboardHomeComponent,
