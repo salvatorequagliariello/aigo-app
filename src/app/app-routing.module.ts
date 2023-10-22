@@ -37,11 +37,11 @@ const routes: Routes = [
     component: CartComponent
   },
   {
-    path: 'dashboard/checkout-success', 
+    path: 'dashboard/cart/checkout-success', 
     component: CartSuccessComponent
   },
   {
-    path: 'dashboard/checkout-error', 
+    path: 'dashboard/cart/checkout-error', 
     component: CartErrorComponent
   },
 ];
