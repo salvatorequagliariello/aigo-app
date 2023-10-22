@@ -8,18 +8,23 @@
                         class="card h-100 border border-light border-2 rounded-4 text-light hov-purple"
                         style="background: none;"
                     >
-                        <label [id]="pack.name" (click)="changeButtonStyle(pack.name)" [for]="pack.id" class="btn btn-outline-secondary text-light d-flex flex-column rounded-4 hov-purple p-3">
-                            <div class="embed-responsive h-100 embed-responsive-1by1 flex-fill">
+                        <label [id]="pack.name" (click)="changeButtonStyle(pack.name)" [for]="pack.id" class="text-light d-flex flex-column rounded-4 hov-purple p-3">
+                            <div class="embed-responsive embed-responsive-16by9 h-75 mx-auto">
                                 <img 
-                                    class="card-img-top h-100 img-fluid embed-responsive-item rounded-5 p-3" 
+                                    class="card-img-top embed-responsive-item rounded-5 p-3" 
                                     [src]="pack.imageUrl"
                                 >
                             </div>
                             <div>
-                                <h3>
-                                    {{ pack.name }}      
-                                </h3>
-                                <div class="d-flex align-items-center w-100 justify-content-center gap-1">
+                                <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
+                                    <h3>
+                                        {{ pack.name }}      
+                                    </h3>
+                                    <h5>
+                                        {{ pack.price }}
+                                    </h5>
+                                </div>
+                                <div class="d-flex align-items-center w-100 gap-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-lightning-charge-fill d-inline-block" viewBox="0 0 24 24">
                                         <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
                                     </svg>
@@ -27,7 +32,10 @@
                                         {{ pack.tokens }} Tokens 
                                     </h4>
                                 </div>
-                                {{ pack.price }}
+                                <hr>
+                                <p>
+                                    {{ pack.tokens }} Code/Chat Generations or {{ pack.tokens / 2 }} Image Generations
+                                </p>
                             </div>
                         </label>
                         <input style="display: none;" [id]="pack.id" type="radio" [value]="pack.value" name="packInput" formControlName="packInput">
@@ -35,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn border border-light border-2 rounded-4 px-5 mt-3 mx-auto mt-2 text-light hov-purple" [disabled]="!cartForm.valid">
+        <button type="submit" class="btn border border-light border-2 rounded-4 px-5 mt-3 mx-auto mt-4 text-light hov-purple" [disabled]="!cartForm.valid">
             Go to Checkout
         </button>
     </form>
