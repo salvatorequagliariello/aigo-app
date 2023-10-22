@@ -7,7 +7,7 @@ import { ManageUserTokensService } from 'src/app/pages/dashboard/services/manage
 @Component({
   selector: 'aigo-main-nav-bar',
   templateUrl: './main-nav-bar.component.html',
-  styleUrls: ['./main-nav-bar.component.css']
+  styleUrls: ['./main-nav-bar.component.scss']
 })
 export class MainNavBarComponent {
 

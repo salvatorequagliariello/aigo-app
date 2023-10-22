@@ -16,10 +16,10 @@
         </a>
     </div>
     <div class="d-flex gap-2">
-        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary fs-6">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-primary fs-6 hov-purple">
             Sign In
         </button>
-        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn border border-danger border-1 text-danger">
+        <button *ngIf="(auth.isAuthenticated$ | async) === true" (click)="handleSignOut()" class="btn border border-danger border-1 text-danger hov-purple">
             Log Out
         </button>
     </div>
