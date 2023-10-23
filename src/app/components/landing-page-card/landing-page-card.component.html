@@ -1,0 +1,11 @@
+<div class="h-100 card bg-transparent text-light border-light border-2 rounded-4 p-3 animate">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-chat-dots mx-auto" viewBox="0 0 16 16">
+        <path [attr.d]="modelLink.icon.pathOne"/>
+        <path *ngIf="modelLink.icon.pathTwo" [attr.d]="modelLink.icon.pathTwo"/>
+    </svg>
+    <div class="card-body">
+        <h5 class="card-title">{{ modelLink.name }}</h5>
+        <hr class="border border-light border-2 opacity-100">
+        <p>{{ modelLink.description }}</p>
+    </div>
+</div>

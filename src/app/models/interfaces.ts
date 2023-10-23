@@ -44,6 +44,6 @@ export interface IconObj {
 export interface ModelLinkObj {
   name: string,
   description: string,
-  link: string,
+  link?: string,
   icon: IconObj
 }
