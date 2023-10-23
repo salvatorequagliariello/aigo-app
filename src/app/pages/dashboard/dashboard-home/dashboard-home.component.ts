@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
-import { IconObj, ModelLinkObj, UserObj } from 'src/app/models/interfaces';
+import { ModelLinkObj, UserObj } from 'src/app/models/interfaces';
 import { DocumentData } from 'firebase/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
