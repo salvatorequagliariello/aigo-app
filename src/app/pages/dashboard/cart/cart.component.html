@@ -5,7 +5,7 @@
             <div class="row g-4">
                 <div *ngFor="let pack of packs" class="col-12 col-sm-6 col-md-6 col-lg-4">
                     <div 
-                        class="card h-100 border border-light border-2 rounded-4 text-light hov-purple"
+                        class="card h-100 border border-light border-2 rounded-4 text-light "
                         style="background: none;"
                     >
                         <label [id]="pack.name" (click)="changeButtonStyle(pack.name)" [for]="pack.id" class="text-light d-flex flex-column rounded-4 hov-purple p-3">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn border border-light border-2 rounded-3 px-5 mx-auto mt-4 text-light hov-purple" [disabled]="!cartForm.valid">
+        <button type="submit" class="btn btn-outline-light border-2 rounded-3 px-5 mx-auto mt-4" [disabled]="!cartForm.valid">
             Go to Checkout
         </button>
     </form>

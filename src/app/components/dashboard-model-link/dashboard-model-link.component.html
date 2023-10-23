@@ -1,10 +1,10 @@
-<a [routerLink]="modelLink.link" class="w-100 text-dark rounded-4 d-flex align-items-center gap-4 mx-auto border border-primary-emphasis p-3 px-4 border-2 hov-purple">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-chat-dots text-light" viewBox="0 0 16 16">
+<a [routerLink]="modelLink.link" class="w-100 btn btn-outline-light border-2 rounded-4 d-flex align-items-center gap-4 mx-auto p-3 px-4 hov-purple">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
         <path [attr.d]="modelLink.icon.pathOne"/>
         <path *ngIf="modelLink.icon.pathTwo" [attr.d]="modelLink.icon.pathTwo"/>
     </svg>
-    <div>
-        <h4 class="text-light">{{ modelLink.name }}</h4>
-        <p class="d-none d-md-inline text-light">{{ modelLink.description }}</p>
+    <div class="text-start">
+        <h4>{{ modelLink.name }}</h4>
+        <p class="d-none d-md-inline">{{ modelLink.description }}</p>
     </div>
 </a>
