@@ -1,6 +1,20 @@
-<div class="m-auto w-75 mt-5 max-container text-light">
-    <div class="text-center mt-5 font-monospace">
-        <h3 class="lh-1">The Best AI Tool for</h3>
-        <h1><strong><span class="typed-element"></span></strong></h1>
+<div class="m-auto w-75 mt-5 max-container text-light text-center">
+    <div class="text-center mt-5">
+        <div class="ai-logo_container w-50 mx-auto">
+            <img src="assets/ai.go-logo.png" class="ai-logo_img mx-auto d-block"/>
+        </div>
+        <h3 class="lh-1"><strong>The Best AI Tool for</strong></h3>
+        <h1><strong><span class="typed-element text-gradient"></span></strong></h1>
+    </div>
+    <div class="w-100 my-5">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-outline-light border-2 rounded-4 px-3 py-2 mx-auto">
+            Start Generating for Free
+        </button>
+        <p class="mt-2">
+            No credit card required.
+        </p>
+    </div>
+    <div  class="mt-3">
+        <h2>Simple, powerful… pure magic!</h2>
     </div>
 </div>

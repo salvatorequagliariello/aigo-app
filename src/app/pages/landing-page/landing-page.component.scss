@@ -1,0 +1,16 @@
+.text-gradient {
+    background: -webkit-linear-gradient(180deg, rgba(96,89,237,1) 0%, rgba(187,34,224,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ai-logo_container {
+    max-height: 100px;
+    min-height: 40px;
+}
+
+.ai-logo_img {
+    max-height: 100px;
+    min-height: 40px;
+    object-fit: contain;
+}

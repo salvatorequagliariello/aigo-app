@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import Typed from 'typed.js';
+import { ManageUserTokensService } from '../dashboard/services/manage-user-tokens.service';
+import { DocumentData } from 'firebase/firestore';
+import { UserObj } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'aigo-landing-page',
@@ -8,20 +12,32 @@ import Typed from 'typed.js';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() {}
+  constructor(public auth: AuthService, private userTk: ManageUserTokensService) {}
+  user: UserObj | DocumentData = this.userTk.user;
 
   ngOnInit(): void {
     const options = {
-      strings: ['Coding.', 'Conversation.', 'Image Generation.'],
+      strings: ['Code Generation.', 'Chatbot.', 'Image Generation.'],
       typeSpeed: 80,
       backSpeed: 80,
       showCursor: true,
       cursorChar: '|',
-      backDelay: 100,
+      backDelay: 200,
       loop: true
     };
  
   const typed = new Typed('.typed-element', options);
   }
 
+  handleSignIn() {
+    this.auth.loginWithRedirect({ appState: { target: '/dashboard' } });
+  }
+
+  handleSignOut() {
+    this.auth.logout();
+  }
+
+  showUser() {
+    this.auth.user$.subscribe(user => console.log(user))
+  }
 }
