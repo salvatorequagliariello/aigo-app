@@ -15,7 +15,7 @@
         </p>
     </div>
     <div class="m-3">
-        <h2>Simple, powerful… pure magic!</h2>
+        <h2 class="text-gradient">Simple, powerful… pure magic!</h2>
         <div class="container mt-5">
         <div class="row mt-4 g-3">
             <div class="col-12 col-lg-6 animate__animated animate__fadeInLeftBig">
@@ -33,10 +33,15 @@
             </div>
         </div>
         <div class="row my-5 g-3 animate__animated animate__fadeInDown">
+            <h2 class="text-gradient">Overview</h2>
             <div *ngFor="let modelLink of modelsLink" class="col-12 col-lg-6 col-xl-4 gx-5">
                 <aigo-landing-page-card [modelLink]="modelLink"></aigo-landing-page-card>
             </div>
         </div>
         </div>
     </div>
+    <div class="mb-5">
+        <h4>Experience the future of AI-powered applications with <span class="text-gradient">ai.go</span>. Start your journey today and discover the transformative potential of <span class="text-gradient">AI Chat</span>, <span class="text-gradient">Coding Generation</span>, and <span class="text-gradient">Image Generation</span> in one powerful app.</h4>
+    </div>
+    <aigo-landing-page-footer></aigo-landing-page-footer>
 </div>

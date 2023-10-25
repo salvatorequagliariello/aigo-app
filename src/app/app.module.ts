@@ -14,13 +14,15 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LandingPageCardComponent } from './components/landing-page-card/landing-page-card.component';
+import { LandingPageFooterComponent } from './components/landing-page-footer/landing-page-footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     MainNavBarComponent,
-    LandingPageCardComponent
+    LandingPageCardComponent,
+    LandingPageFooterComponent
   ],
   imports: [
     BrowserModule,
