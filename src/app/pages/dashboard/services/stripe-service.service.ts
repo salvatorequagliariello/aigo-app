@@ -9,10 +9,6 @@ import { ManageUserTokensService } from './manage-user-tokens.service';
 })
 export class StripeService implements OnInit {
   stripe!: Stripe | null
-  lastPayment: PaymentObj = {
-    madeBy: null,
-    amountOfTokens: null
-  }
 
   constructor( private userTk: ManageUserTokensService ) { }
 
@@ -23,11 +19,6 @@ export class StripeService implements OnInit {
     this.stripe = await loadStripe(import.meta.env.NG_APP_STRIPE_KEY);
 
     try {
-      this.lastPayment = {
-        madeBy: this.userTk.user.name,
-        amountOfTokens: pack.tokens
-      };
-
       const paymentResponse = await this.stripe?.redirectToCheckout({
         lineItems: [{
           price: pack.value,
@@ -35,7 +26,7 @@ export class StripeService implements OnInit {
         }],
         mode: 'payment',
         successUrl: 'http://localhost:4200/dashboard/cart/checkout-success',
-        cancelUrl: 'http://localhost:4200/dashboard/cart/checkout-failure'
+        cancelUrl: 'http://localhost:4200/dashboard/cart/checkout-error'
       });
 
     } catch (error) {
@@ -44,16 +35,6 @@ export class StripeService implements OnInit {
   }
 
   async checkPayment() {
-    console.log("weeeee", this.lastPayment.amountOfTokens);
-    if (this.lastPayment.amountOfTokens && this.userTk.user.name === this.lastPayment.madeBy) {
-      try {
-        await this.userTk.updateUserTokens(this.lastPayment.amountOfTokens);
-      } catch (error) {
-        console.log(error);
-      };
 
-      this.lastPayment.amountOfTokens = null;
-      this.lastPayment.madeBy = null;
-    };
   }
 }

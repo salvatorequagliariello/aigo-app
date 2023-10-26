@@ -3,7 +3,7 @@ import { Firestore, collectionData } from '@angular/fire/firestore';
 import { AuthService } from '@auth0/auth0-angular';
 import { error } from 'console';
 import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
-import { AuthObj, UserObj } from 'src/app/models/interfaces';
+import { AuthObj, PackObj, UserObj } from 'src/app/models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +89,18 @@ export class ManageUserTokensService {
       }
     } 
   }
+
+  addPayment(pack: PackObj) {
+    const paymentId = Date.now().toString() + pack.tokens;
+
+    setDoc(doc(this.fs, 'payments', paymentId), {
+      madeBy: this.user.name,
+      tokens: pack.tokens,
+      createdAt: Date.now()
+    }).catch(err => {
+      console.log(err);
+      throw err;
+    });
+  }
+
 }

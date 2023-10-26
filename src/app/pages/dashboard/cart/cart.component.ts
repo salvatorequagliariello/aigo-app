@@ -52,8 +52,9 @@ export class CartComponent implements OnInit {
   async onSubmit() {    
     if (this.cartForm.valid) {
       const selectedPack = this.packs.find(pack => pack.value === this.cartForm.value.packInput);
-
       if (selectedPack) {
+        this.userTk.addPayment(selectedPack);
+
         await this.stripe.getPayment(selectedPack);
         this.cartForm.reset(this.cartForm);
       };
