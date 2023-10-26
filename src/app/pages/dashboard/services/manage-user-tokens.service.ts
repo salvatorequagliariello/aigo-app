@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { AuthService } from '@auth0/auth0-angular';
 import { error } from 'console';
-import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
+import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
 import { AuthObj, UserObj } from 'src/app/models/interfaces';
 
 @Injectable({

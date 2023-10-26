@@ -47,3 +47,8 @@ export interface ModelLinkObj {
   link?: string,
   icon: IconObj
 }
+
+export interface PaymentObj {
+  madeBy: string | null,
+  amountOfTokens: number | null
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StripeService } from '../services/stripe-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IconObj, PackObj } from 'src/app/models/interfaces';
+import { Firestore } from '@angular/fire/firestore';
+import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 
 @Component({
   selector: 'aigo-cart',
@@ -37,9 +39,11 @@ export class CartComponent implements OnInit {
     }
   ]
 
-  constructor(private stripe: StripeService) {}
+  constructor(private stripe: StripeService, private userTk: ManageUserTokensService) {}
 
   ngOnInit(): void {
+    this.userTk.checkUser();
+
     this.cartForm = new FormGroup({
       packInput: new FormControl('', Validators.required)
     }) 
@@ -47,8 +51,12 @@ export class CartComponent implements OnInit {
 
   async onSubmit() {    
     if (this.cartForm.valid) {
-      await this.stripe.getPayment(this.cartForm.value.packInput);
-      this.cartForm.reset(this.cartForm);
+      const selectedPack = this.packs.find(pack => pack.value === this.cartForm.value.packInput);
+
+      if (selectedPack) {
+        await this.stripe.getPayment(selectedPack);
+        this.cartForm.reset(this.cartForm);
+      };
     };
   }
 

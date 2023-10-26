@@ -13,7 +13,7 @@ import { CartErrorComponent } from './pages/dashboard/cart-error/cart-error.comp
 const routes: Routes = [
   { 
     path: '',
-    component: LandingPageComponent 
+    component: LandingPageComponent
   },
   { 
     path: 'dashboard',
@@ -22,27 +22,33 @@ const routes: Routes = [
   },
   {
     path: 'dashboard/chat', 
-    component: AiChatComponent
+    component: AiChatComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/code-generation', 
-    component: CodeAiComponent
+    component: CodeAiComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/image-generation', 
-    component: ImageAiComponent
+    component: ImageAiComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/cart', 
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/cart/checkout-success', 
-    component: CartSuccessComponent
+    component: CartSuccessComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/cart/checkout-error', 
-    component: CartErrorComponent
+    component: CartErrorComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
