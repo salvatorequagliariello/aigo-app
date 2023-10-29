@@ -1,4 +1,3 @@
-import { DocumentData } from "firebase/firestore"
 
 export interface ResponseObj {
   loading: boolean,
@@ -19,7 +18,9 @@ export interface UserObj {
   tokens: number,
   name: string,
   email: string,
-  id: string
+  id: string,
+  lastPayment?: string | null,
+  tokensBought?: number | null
 }
 
 export interface AuthObj {
@@ -46,9 +47,4 @@ export interface ModelLinkObj {
   description: string,
   link?: string,
   icon: IconObj
-}
-
-export interface PaymentObj {
-  madeBy: string | null,
-  amountOfTokens: number | null
 }

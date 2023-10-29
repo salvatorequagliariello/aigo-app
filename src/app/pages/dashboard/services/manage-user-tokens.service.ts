@@ -12,7 +12,6 @@ export class ManageUserTokensService {
   constructor(private fs: Firestore, public auth: AuthService) { }
 
   usersCollection: CollectionReference = collection(this.fs, 'users');
-  
   user: UserObj | DocumentData = {
     tokens: 0,
     name: "",
@@ -52,6 +51,8 @@ export class ManageUserTokensService {
             this.user.name = foundUser[0]['name'];
             this.user.email = foundUser[0]['email'];
             this.user.tokens = foundUser[0]['tokens'];
+            this.user.lastPayment = foundUser[0]['lastPayment'];
+            this.user.tokensBought = foundUser[0]['tokensBought'];
           };
         });
     }
@@ -90,17 +91,30 @@ export class ManageUserTokensService {
     } 
   }
 
-  addPayment(pack: PackObj) {
-    const paymentId = Date.now().toString() + pack.tokens;
-
-    setDoc(doc(this.fs, 'payments', paymentId), {
-      madeBy: this.user.name,
-      tokens: pack.tokens,
-      createdAt: Date.now()
-    }).catch(err => {
-      console.log(err);
-      throw err;
-    });
+  async addPayment(pack: PackObj) {
+    if (this.authObj.isLoggedIn && this.authObj.authId) {
+      const userRef = doc(this.fs, 'users', this.authObj.authId);
+      try {
+        await updateDoc(userRef, { lastPayment: pack.price, tokensBought: pack.tokens });
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    } 
   }
+
+  async confirmPayment() {
+      if (this.authObj.isLoggedIn && this.authObj.authId) {
+        const userRef = doc(this.fs, 'users', this.authObj.authId);
+        getDoc(userRef).then(user => {
+          const userInfo = user.data();
+          if (userInfo) {
+            this.updateUserTokens(userInfo['tokensBought']);
+          }
+        });
+      } else {
+        return;
+      }
+  } 
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StripeService } from '../services/stripe-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IconObj, PackObj } from 'src/app/models/interfaces';
-import { Firestore } from '@angular/fire/firestore';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 
 @Component({

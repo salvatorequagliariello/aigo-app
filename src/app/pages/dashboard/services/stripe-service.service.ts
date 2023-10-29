@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
 import {Stripe, loadStripe} from '@stripe/stripe-js';
-import { PackObj, PaymentObj } from 'src/app/models/interfaces';
+import { PackObj} from 'src/app/models/interfaces';
 import { ManageUserTokensService } from './manage-user-tokens.service';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { ManageUserTokensService } from './manage-user-tokens.service';
 export class StripeService implements OnInit {
   stripe!: Stripe | null
 
-  constructor( private userTk: ManageUserTokensService ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -32,9 +31,5 @@ export class StripeService implements OnInit {
     } catch (error) {
       console.log(error);
     }
-  }
-
-  async checkPayment() {
-
   }
 }
