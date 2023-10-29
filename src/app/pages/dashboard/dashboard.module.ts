@@ -13,11 +13,16 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ImageAiComponent } from './image-ai/image-ai.component';
 import { ImageAiService } from './services/image-ai.service';
 import { ManageUserTokensService } from './services/manage-user-tokens.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProModalComponent } from 'src/app/components/pro-modal/pro-modal.component';
 import { CartComponent } from './cart/cart.component';
 import { StripeService } from './services/stripe-service.service';
-
+import { CartSuccessComponent } from './cart-success/cart-success.component';
+import { CartErrorComponent } from './cart-error/cart-error.component';
+import { AiHeaderComponent } from 'src/app/components/ai-header/ai-header.component';
+import { EmptyGenerationComponent } from 'src/app/components/empty-generation/empty-generation.component';
+import { GenerationErrorAlertComponent } from 'src/app/components/generation-error-alert/generation-error-alert.component';
+import { AppErrorAlertComponent } from 'src/app/components/app-error-alert/app-error-alert.component';
+import { DashboardModelLinkComponent } from 'src/app/components/dashboard-model-link/dashboard-model-link.component';
 
 
 @NgModule({
@@ -27,7 +32,14 @@ import { StripeService } from './services/stripe-service.service';
     CodeAiComponent,
     ImageAiComponent,
     ProModalComponent,
-    CartComponent
+    CartComponent,
+    CartSuccessComponent,
+    CartErrorComponent,
+    AiHeaderComponent,
+    EmptyGenerationComponent,
+    GenerationErrorAlertComponent,
+    AppErrorAlertComponent,
+    DashboardModelLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +47,7 @@ import { StripeService } from './services/stripe-service.service';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
   providers: [
     OpenAiService,
@@ -43,7 +55,6 @@ import { StripeService } from './services/stripe-service.service';
     ImageAiService,
     ManageUserTokensService,
     StripeService,
-    NgbModal,
   ]
 })
 export class DashboardModule { }

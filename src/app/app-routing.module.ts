@@ -7,11 +7,13 @@ import { AiChatComponent } from './pages/dashboard/ai-chat/ai-chat.component';
 import { CodeAiComponent } from './pages/dashboard/code-ai/code-ai.component';
 import { ImageAiComponent } from './pages/dashboard/image-ai/image-ai.component';
 import { CartComponent } from './pages/dashboard/cart/cart.component';
+import { CartSuccessComponent } from './pages/dashboard/cart-success/cart-success.component';
+import { CartErrorComponent } from './pages/dashboard/cart-error/cart-error.component';
 
 const routes: Routes = [
   { 
     path: '',
-    component: LandingPageComponent 
+    component: LandingPageComponent
   },
   { 
     path: 'dashboard',
@@ -20,20 +22,34 @@ const routes: Routes = [
   },
   {
     path: 'dashboard/chat', 
-    component: AiChatComponent
+    component: AiChatComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/code-generation', 
-    component: CodeAiComponent
+    component: CodeAiComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/image-generation', 
-    component: ImageAiComponent
+    component: ImageAiComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/cart', 
-    component: CartComponent
-  }
+    component: CartComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/cart/checkout-success', 
+    component: CartSuccessComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/cart/checkout-error', 
+    component: CartErrorComponent,
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { AuthService } from '@auth0/auth0-angular';
 import { error } from 'console';
-import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
-import { AuthObj, UserObj } from 'src/app/models/interfaces';
+import { CollectionReference, DocumentData, addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
+import { AuthObj, PackObj, UserObj } from 'src/app/models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ export class ManageUserTokensService {
   constructor(private fs: Firestore, public auth: AuthService) { }
 
   usersCollection: CollectionReference = collection(this.fs, 'users');
-  
   user: UserObj | DocumentData = {
     tokens: 0,
     name: "",
@@ -52,6 +51,8 @@ export class ManageUserTokensService {
             this.user.name = foundUser[0]['name'];
             this.user.email = foundUser[0]['email'];
             this.user.tokens = foundUser[0]['tokens'];
+            this.user.lastPayment = foundUser[0]['lastPayment'];
+            this.user.tokensBought = foundUser[0]['tokensBought'];
           };
         });
     }
@@ -89,4 +90,31 @@ export class ManageUserTokensService {
       }
     } 
   }
+
+  async addPayment(pack: PackObj) {
+    if (this.authObj.isLoggedIn && this.authObj.authId) {
+      const userRef = doc(this.fs, 'users', this.authObj.authId);
+      try {
+        await updateDoc(userRef, { lastPayment: pack.price, tokensBought: pack.tokens });
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    } 
+  }
+
+  async confirmPayment() {
+      if (this.authObj.isLoggedIn && this.authObj.authId) {
+        const userRef = doc(this.fs, 'users', this.authObj.authId);
+        getDoc(userRef).then(user => {
+          const userInfo = user.data();
+          if (userInfo) {
+            this.updateUserTokens(userInfo['tokensBought']);
+          }
+        });
+      } else {
+        return;
+      }
+  } 
+
 }

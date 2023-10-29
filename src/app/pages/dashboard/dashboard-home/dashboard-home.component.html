@@ -1,25 +1,21 @@
-<div class="mt-3">
-    <h1 class="fs-2 text-center">Explore the power of AIgo</h1>
-    <nav>
-        <ul>
-            <li class="list-group-item">
-                <a routerLink="chat">Conversation</a>
-            </li>
-            <li class="list-group-item">
-                <a routerLink="code-generation">Code Generation</a>
-            </li>
-            <li class="list-group-item">
-                <a routerLink="image-generation">Image Generation</a>
-            </li>
-        </ul>
-    </nav>
-    <div>
-        <p>Free tokens {{ user.tokens }}</p>
-        <button  class="btn btn-secondary" (click)="openVerticallyCentered(content)">
-            <a routerLink="cart">Buy Tokens</a>
-        </button>
+<div class="m-auto w-75 mt-3 max-container text-light">
+    <div class="w-100">
+        <h2 class="text-center">Explore the power of</h2>
+        <div class="ai-logo_container w-50 mx-auto">
+            <img src="assets/ai.go-logo.png" class="ai-logo_img mx-auto d-block"/>
+        </div>
     </div>
-    <ng-template #content let-modal>
-        <aigo-pro-modal [modal]="modal"></aigo-pro-modal>
-    </ng-template>
+    <nav class="w-100 mt-5 d-flex flex-column gap-4">
+            <aigo-dashboard-model-link 
+                *ngFor="let model of modelsLink" 
+                [modelLink]="model"
+            >
+            </aigo-dashboard-model-link>
+    </nav>
+    <a routerLink="cart" class="mt-3 w-min btn btn-outline-light border-2 rounded-3 py-1 px-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge-fill text-center" viewBox="0 0 16 16">
+            <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+        </svg>
+        Buy Tokens
+    </a>
 </div>

@@ -1,26 +1,35 @@
 import { Injectable, OnInit } from '@angular/core';
 import {Stripe, loadStripe} from '@stripe/stripe-js';
+import { PackObj} from 'src/app/models/interfaces';
+import { ManageUserTokensService } from './manage-user-tokens.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StripeService implements OnInit {
   stripe!: Stripe | null
+
   constructor() { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
   }
   
-  async getPayment() {
+  async getPayment(pack: PackObj) {
     this.stripe = await loadStripe(import.meta.env.NG_APP_STRIPE_KEY);
-    this.stripe?.redirectToCheckout({
-      lineItems: [{
-        price: 'price_1O2FgpEtgAmqoL03xjzzFSfQ',
-        quantity: 1
-      }],
-      mode: 'payment',
-      successUrl: 'http://localhost:4200/dashboard/cart',
-      cancelUrl: 'http://localhost:4200/dashboard/cart'
-    }).then(response => console.log(response))
+
+    try {
+      const paymentResponse = await this.stripe?.redirectToCheckout({
+        lineItems: [{
+          price: pack.value,
+          quantity: 1
+        }],
+        mode: 'payment',
+        successUrl: 'http://localhost:4200/dashboard/cart/checkout-success',
+        cancelUrl: 'http://localhost:4200/dashboard/cart/checkout-error'
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

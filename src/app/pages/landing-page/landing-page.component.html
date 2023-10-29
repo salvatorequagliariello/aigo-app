@@ -1,3 +1,47 @@
-<div class="m-auto w-75">
-    <h1>AIgo</h1>
+<div class="m-auto w-md-75 mt-5 max-container text-light text-center">
+    <div class="text-center mt-5">
+        <div class="ai-logo_container w-50 mx-auto">
+            <img src="assets/ai.go-logo.png" class="ai-logo_img mx-auto d-block"/>
+        </div>
+        <h3 class="lh-1"><strong>The Best AI Tool for</strong></h3>
+        <h1><strong><span class="typed-element text-gradient"></span></strong></h1>
+    </div>
+    <div class="w-100 my-5">
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" (click)="handleSignIn()" class="btn btn-outline-light border-2 rounded-4 px-3 py-2 mx-auto">
+            Start Generating for Free
+        </button>
+        <p class="mt-2">
+            No credit card required.
+        </p>
+    </div>
+    <div class="w-100 mx-auto m-3">
+        <h2 class="text-gradient">Simple, powerful… pure magic!</h2>
+        <div class="w-100 container mt-5">
+        <div class="row mt-4 g-3">
+            <div class="col-12 col-lg-6 animate__animated animate__fadeInLeftBig">
+                <img src="assets/undraw_version_control_re_mg66.svg" class="w-75 img-fluid"/>
+            </div>
+            <div class="col-12 col-lg-6 d-flex align-items-center animate__animated animate__fadeInRightBig">
+                <div class="px-3">
+                    <h5 class="text-start">
+                        Welcome to <span class="text-gradient">ai.go</span>, the all-in-one app that combines the power of AI chat, coding generation, and image generation.
+                    </h5>
+                    <h5 class="text-start mt-4">
+                        With <span class="text-gradient">ai.go</span>, you can unlock a world of possibilities and tap into the limitless potential of artificial intelligence.
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5 g-3 animate__animated animate__fadeInDown">
+            <h2 class="text-gradient">Overview</h2>
+            <div *ngFor="let modelLink of modelsLink" class="col-12 col-lg-6 col-xl-4 gx-5">
+                <aigo-landing-page-card [modelLink]="modelLink"></aigo-landing-page-card>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="mb-5 px-3">
+        <h4>Experience the future of AI-powered applications with <span class="text-gradient">ai.go</span>. Start your journey today and discover the transformative potential of <span class="text-gradient">AI Chat</span>, <span class="text-gradient">Coding Generation</span>, and <span class="text-gradient">Image Generation</span> in one powerful app.</h4>
+    </div>
+    <aigo-landing-page-footer></aigo-landing-page-footer>
 </div>

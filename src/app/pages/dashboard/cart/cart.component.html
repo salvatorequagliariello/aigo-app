@@ -1,5 +1,50 @@
-<p>cart works!</p>
-
-<button (click)="onSubmit()">
-    pay
-</button>
+<div class="m-auto w-75 mt-4 max-container">
+    <aigo-ai-header title="Cart" description="Choose a pack to buy." [icon]="cartIcon"></aigo-ai-header>
+    <form [formGroup]="cartForm" (ngSubmit)="onSubmit()" class="form-group d-flex flex-column mt-3 p-3">
+        <div class="container w-100 mt-3">
+            <div class="row g-4">
+                <div *ngFor="let pack of packs" class="col-12 col-sm-6 col-md-6 col-lg-4">
+                    <div 
+                        class="card h-100 border border-light border-2 rounded-4 text-light "
+                        style="background: none;"
+                    >
+                        <label [id]="pack.name" (click)="changeButtonStyle(pack.name)" [for]="pack.id" class="text-light d-flex flex-column rounded-4 hov-purple p-3">
+                            <div class="embed-responsive embed-responsive-16by9 h-75 mx-auto">
+                                <img 
+                                    class="card-img-top embed-responsive-item rounded-5 p-3" 
+                                    [src]="pack.imageUrl"
+                                >
+                            </div>
+                            <div>
+                                <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
+                                    <h3>
+                                        {{ pack.name }}      
+                                    </h3>
+                                    <h5>
+                                        {{ pack.price }}
+                                    </h5>
+                                </div>
+                                <div class="d-flex align-items-center w-100 gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-lightning-charge-fill d-inline-block" viewBox="0 0 24 24">
+                                        <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                                    </svg>
+                                    <h4>
+                                        {{ pack.tokens }} Tokens 
+                                    </h4>
+                                </div>
+                                <hr>
+                                <p>
+                                    {{ pack.tokens }} Code/Chat Generations or {{ pack.tokens / 2 }} Image Generations
+                                </p>
+                            </div>
+                        </label>
+                        <input style="display: none;" [id]="pack.id" type="radio" [value]="pack.value" name="packInput" formControlName="packInput">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-light border-2 rounded-3 px-5 mx-auto mt-4" [disabled]="!cartForm.valid">
+            Go to Checkout
+        </button>
+    </form>
+</div>

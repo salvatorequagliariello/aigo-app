@@ -1,0 +1,10 @@
+<div class="text-light d-flex align-items-center gap-4">
+    <svg *ngIf="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-chat-dots text-light" viewBox="0 0 16 16">
+        <path [attr.d]="icon.pathOne"/>
+        <path *ngIf="icon.pathTwo" [attr.d]="icon.pathTwo"/>
+    </svg>
+    <div>
+        <h1>{{ title }}</h1>
+        <p *ngIf="description" class="d-none d-md-inline">{{ description }}</p>
+    </div>
+</div>
