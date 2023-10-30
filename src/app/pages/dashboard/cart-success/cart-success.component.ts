@@ -12,7 +12,6 @@ export class CartSuccessComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.userTk.checkUser();
-
     await this.userTk.confirmPayment();  
   }
 }

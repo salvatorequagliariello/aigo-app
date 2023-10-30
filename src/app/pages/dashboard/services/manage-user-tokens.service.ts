@@ -115,6 +115,7 @@ export class ManageUserTokensService {
             this.updateUserTokens(userInfo['tokensBought']);
           }
         });
+        updateDoc(userRef, { lastPayment: null, tokensBought: null });
       } else {
         return;
       }
