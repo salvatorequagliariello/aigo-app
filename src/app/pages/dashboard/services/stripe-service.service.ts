@@ -24,8 +24,8 @@ export class StripeService implements OnInit {
           quantity: 1
         }],
         mode: 'payment',
-        successUrl: 'http://localhost:4200/dashboard/cart/checkout-success',
-        cancelUrl: 'http://localhost:4200/dashboard/cart/checkout-error'
+        successUrl: 'https://aigo-ai.vercel.app/dashboard/cart/checkout-success',
+        cancelUrl: 'https://aigo-ai.vercel.app/dashboard/cart/checkout-error'
       });
 
     } catch (error) {
