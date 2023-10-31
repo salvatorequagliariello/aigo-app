@@ -17,11 +17,6 @@ export class DashboardHomeComponent implements OnInit {
     this.userTk.checkUser();
   }
 
-  userTokens() {
-    this.userTk.checkUser();
-    console.log(this.user)
-  }
-
   modelsLink: ModelLinkObj[] = [
     {
       name: "Conversation",
