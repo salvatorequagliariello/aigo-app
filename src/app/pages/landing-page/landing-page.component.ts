@@ -16,6 +16,7 @@ export class LandingPageComponent implements OnInit {
   user: UserObj | DocumentData = this.userTk.user;
 
   ngOnInit(): void {
+    this.userTk.checkUser();
     const options = {
       strings: ['Code Generation.', 'Chatbot.', 'Image Generation.'],
       typeSpeed: 80,
