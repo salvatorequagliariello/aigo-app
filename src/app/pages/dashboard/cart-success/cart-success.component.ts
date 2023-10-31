@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { ManageUserTokensService } from '../services/manage-user-tokens.service';
 
 @Component({
@@ -6,12 +6,22 @@ import { ManageUserTokensService } from '../services/manage-user-tokens.service'
   templateUrl: './cart-success.component.html',
   styleUrls: ['./cart-success.component.scss']
 })
-export class CartSuccessComponent implements OnInit {
+export class CartSuccessComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   constructor(private userTk: ManageUserTokensService) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.userTk.checkUser();
-    await this.userTk.confirmPayment();  
+    this.userTk.confirmPayment();  
+  }
+  
+  async ngAfterContentInit(): Promise<void> {
+    // await this.userTk.cleanPayment();
+      
+  }
+
+  async ngAfterViewInit(): Promise<void> {
+    // await this.userTk.cleanPayment();
+      
   }
 }

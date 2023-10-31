@@ -107,18 +107,20 @@ export class ManageUserTokensService {
   }
 
   async confirmPayment() {
-      if (this.authObj.isLoggedIn && this.authObj.authId) {
-        const userRef = doc(this.fs, 'users', this.authObj.authId);
-        getDoc(userRef).then(user => {
-          const userInfo = user.data();
-          if (userInfo) {
-            this.updateUserTokens(userInfo['tokensBought']);
-          }
-        });
-        updateDoc(userRef, { lastPayment: null, tokensBought: null });
-      } else {
-        return;
+    if (this.authObj.isLoggedIn && this.authObj.authId) {
+      const userRef = doc(this.fs, 'users', this.authObj.authId);
+      try {
+        const doc = await getDoc(userRef);
+        const user = await doc.data();
+        if (doc.exists() && user) {
+          await this.updateUserTokens(user['tokensBought']);
+          await updateDoc(userRef, { lastPayment: null, tokensBought: null });
+        }
+      } catch (error) {
+        console.log(error);
+        throw error;
       }
-  } 
+    }
+  }
 
 }
