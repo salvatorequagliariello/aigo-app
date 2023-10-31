@@ -15,6 +15,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LandingPageCardComponent } from './components/landing-page-card/landing-page-card.component';
 import { LandingPageFooterComponent } from './components/landing-page-footer/landing-page-footer.component';
+import { ManageUserTokensService } from './pages/dashboard/services/manage-user-tokens.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { LandingPageFooterComponent } from './components/landing-page-footer/lan
     provideStorage(() => getStorage())
   ],
   providers: [
-    NgbModal
+    NgbModal,
+    ManageUserTokensService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import Typed from 'typed.js';
 import { ManageUserTokensService } from '../dashboard/services/manage-user-tokens.service';
@@ -10,12 +10,13 @@ import { ModelLinkObj, UserObj } from 'src/app/models/interfaces';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit, AfterContentInit {
+export class LandingPageComponent implements OnInit {
 
   constructor(public auth: AuthService, private userTk: ManageUserTokensService) {}
   user: UserObj | DocumentData = this.userTk.user;
 
   ngOnInit(): void {
+    this.userTk.checkUser();
     const options = {
       strings: ['Code Generation.', 'Chatbot.', 'Image Generation.'],
       typeSpeed: 80,
@@ -27,10 +28,6 @@ export class LandingPageComponent implements OnInit, AfterContentInit {
     };
  
   const typed = new Typed('.typed-element', options);
-  }
-
-  ngAfterContentInit(): void {
-    this.userTk.checkUser();   
   }
 
   handleSignIn() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DocumentData } from 'firebase/firestore';
 import { UserObj } from 'src/app/models/interfaces';
@@ -20,9 +20,5 @@ export class MainNavBarComponent {
 
   handleSignOut() {
     this.auth.logout();
-  }
-
-  showUser() {
-    this.auth.user$.subscribe(user => console.log(user))
   }
 }
