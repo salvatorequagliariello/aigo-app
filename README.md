@@ -53,3 +53,21 @@ Authentication in ai.Go is based on the robust Auth0 platform. With Auth0, users
 <br>
 
 ## Showcase
+![Nuovo progetto](https://github.com/salvatorequagliariello/aigo-app/assets/109867120/7b90352f-da51-4af3-968a-e18404557bb7)
+> ai.Go's homepage and personal dashboard. In the ai.GO dashboard the user can choose which AI model to use or buy Tokens.
+
+<br>
+
+![Nuovo progetto (1)](https://github.com/salvatorequagliariello/aigo-app/assets/109867120/9587114d-4692-4bdf-8083-a3b4b87a130d)
+> The Chatbot and the Code generation system are extremely easy to use, just write a prompt and send it, the response will be immediate.
+
+![Nuovo progetto (2)](https://github.com/salvatorequagliariello/aigo-app/assets/109867120/c406bd9f-a4c6-40c5-8e13-9f8f3c5511c8)
+> In addition to the initial prompt, the Image Generation service also asks the user for the number of images to be generated and their resolution. Tokens consumed per request vary depending on how many images the user generates and their resolution.
+> The generated images can then be downloaded.
+>
+
+<br>
+
+![Nuovo progetto (3)](https://github.com/salvatorequagliariello/aigo-app/assets/109867120/325649bb-7ef8-4fc4-8451-997859a8403e)
+> The Cart page allows users to buy Tokens. Three different packages can be purchased, varying in number of Tokens and cost. The transaction is handled by Stripe in Client Test mode.
+
