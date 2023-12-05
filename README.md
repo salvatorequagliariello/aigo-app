@@ -35,7 +35,7 @@ Integration with the [OpenAI](https://openai.com/) API lies at the core of ai.Go
 
 ai.Go makes artificial intelligence accessible to everyone. Just create an account and you're done. Once you get to the dashboard, you simply select your desired service from the three available (Chat, Image generation, and Code generation) and give ai.Go a prompt to see the magic happen.
 
-The application relies on a Token based system to regulate the requests a user can do, and each request made to the OpenAI API consumes at least 1 token. Users and their Tokens are stored in a Firebase database. When a user signs up for the first time, he or she is given 10 free Tokens. Once the 10 free Tokens have been used up, the user has the option of purchasing additional Tokens provided in three different packs, the Bronze Pack, the Silver Pack and the Gold Pack. The checkout system is managed by [Stripe](https://stripe.com/) in Client mode.
+The application relies on a Token based system to regulate the requests a user can do, and each request made to the OpenAI API consumes at least 1 token. Users and their Tokens are stored in a [Firebase](https://firebase.google.com/) database. When a user signs up for the first time, he or she is given 10 free Tokens. Once the 10 free Tokens have been used up, the user has the option of purchasing additional Tokens provided in three different packs, the Bronze Pack, the Silver Pack and the Gold Pack. The checkout system is managed by [Stripe](https://stripe.com/) in Client mode.
 
 Authentication in ai.Go is based on the robust [Auth0](https://auth0.com/) platform. With [Auth0](https://auth0.com/), users can confidently log in, create accounts, and manage their authentication credentials with ease. 
 
