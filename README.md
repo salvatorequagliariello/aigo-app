@@ -5,7 +5,7 @@
   ai.GO 🤖
 </h1>
 
-ai.Go is a cutting-edge web app that harnesses the power of artificial intelligence to assist users in various tasks. Built with (Angular)[https://angular.io/] and [Firebase](https://firebase.google.com/), ai.Go offers a robust and user-friendly platform for generating code, creating images, and engaging in interactive conversations with an AI assistant.
+ai.Go is a cutting-edge web app that harnesses the power of artificial intelligence to assist users in various tasks. Built with [Angular](https://angular.io/) and [Firebase](https://firebase.google.com/), ai.Go offers a robust and user-friendly platform for generating code, creating images, and engaging in interactive conversations with an AI assistant.
 
 
 <br>
@@ -31,7 +31,7 @@ ai.Go is a cutting-edge web app that harnesses the power of artificial intellige
 <br>
 
 ## Overview
-Integration with the [OpenAI](https://openai.com/) API lies at the core of ai.Go's capabilities. By leveraging the power of natural language processing and machine learning, ai.Go enables users to generate code snippets, design images, and engage in meaningful conversations with the AI assistant. ai.Go is built with (Angular)[https://angular.io/], is written in [TypeScript](https://www.typescriptlang.org/) and all the UI is styled with [Bootstrap](https://getbootstrap.com/). The app is fully responsive and user-friendly on every device.
+Integration with the [OpenAI](https://openai.com/) API lies at the core of ai.Go's capabilities. By leveraging the power of natural language processing and machine learning, ai.Go enables users to generate code snippets, design images, and engage in meaningful conversations with the AI assistant. ai.Go is built with [Angular](https://angular.io/), is written in [TypeScript](https://www.typescriptlang.org/) and all the UI is styled with [Bootstrap](https://getbootstrap.com/). The app is fully responsive and user-friendly on every device.
 
 ai.Go makes artificial intelligence accessible to everyone. Just create an account and you're done. Once you get to the dashboard, you simply select your desired service from the three available (Chat, Image generation, and Code generation) and give ai.Go a prompt to see the magic happen.
 
